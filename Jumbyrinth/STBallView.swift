@@ -10,14 +10,18 @@ class STBallView: UIView {
     var imageHeight : CGFloat = 20
     
     var accelleration = CMAcceleration()
+    var jump = CMAcceleration()
     var imageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     
 
     var ballXVelocity : Double = 0
     var ballYVelocity : Double = 0
     
+    var ballZVelovity : Double = 0
+    
     var bits = [[Bool]]()
 
+    var z : Double = 0
 
     var currentPoint = CGPoint() {
         didSet{
@@ -32,21 +36,24 @@ class STBallView: UIView {
                 ballXVelocity = -ballXVelocity * 0.5
             }
             
-            for i in 0...Int(imageHeight/2) {
-                if (Int(currentPoint.x) + i >= Int(bounds.size.width)) {
-                    break
-                }
-                if self.bits[Int(currentPoint.y)][Int(currentPoint.x) + i] {
-                    ballXVelocity = min(-0.02, -ballXVelocity * 0.5)
-                    break
-                }
-                
-                if (Int(currentPoint.x) - i <= 0) {
-                    break
-                }
-                if self.bits[Int(currentPoint.y)][Int(currentPoint.x) - i] {
-                    ballXVelocity = max(0.02, -ballXVelocity * 0.5)
-                    break
+            if (self.z < 0.5) {
+            
+                for i in 0...Int(imageHeight/2) {
+                    if (Int(currentPoint.x) + i >= Int(bounds.size.width)) {
+                        break
+                    }
+                    if self.bits[Int(currentPoint.y)][Int(currentPoint.x) + i] {
+                        ballXVelocity = min(-0.02, -ballXVelocity * 0.5)
+                        break
+                    }
+                    
+                    if (Int(currentPoint.x) - i <= 0) {
+                        break
+                    }
+                    if self.bits[Int(currentPoint.y)][Int(currentPoint.x) - i] {
+                        ballXVelocity = max(0.02, -ballXVelocity * 0.5)
+                        break
+                    }
                 }
             }
             
@@ -61,21 +68,24 @@ class STBallView: UIView {
                 ballYVelocity = -ballYVelocity * 0.5
             }
             
-            for i in 0...Int(imageHeight/2) {
-                if (Int(currentPoint.y) + i >= Int(bounds.size.height)) {
-                    break
-                }
-                if self.bits[Int(currentPoint.y) + i][Int(currentPoint.x)] {
-                    ballYVelocity = max(0.02, -ballYVelocity * 0.5)
-                    break
-                }
+            
+            if (self.z < 0.5) {
+                for i in 0...Int(imageHeight/2) {
+                    if (Int(currentPoint.y) + i >= Int(bounds.size.height)) {
+                        break
+                    }
+                    if self.bits[Int(currentPoint.y) + i][Int(currentPoint.x)] {
+                        ballYVelocity = max(0.02, -ballYVelocity * 0.5)
+                        break
+                    }
 
-                if (Int(currentPoint.y) - i <= 0) {
-                    break
-                }
-                if self.bits[Int(currentPoint.y) - i][Int(currentPoint.x)] {
-                    ballYVelocity = min(-0.02, -ballYVelocity * 0.5)
-                    break
+                    if (Int(currentPoint.y) - i <= 0) {
+                        break
+                    }
+                    if self.bits[Int(currentPoint.y) - i][Int(currentPoint.x)] {
+                        ballYVelocity = min(-0.02, -ballYVelocity * 0.5)
+                        break
+                    }
                 }
             }
 
@@ -173,7 +183,7 @@ class STBallView: UIView {
       imageView.image = UIImage.init(named: "ball")
         addSubview(imageView)
         
-        currentPoint = center
+        currentPoint = CGPoint(x: imageWidth/2, y: imageHeight/2)
         imageView.center = currentPoint
     }
     
@@ -191,6 +201,26 @@ class STBallView: UIView {
             if (ballYVelocity > 0.3) {ballYVelocity = 0.3}
             
             if (ballYVelocity < -0.3) {ballXVelocity = -0.3}
+            
+            if (self.jump.z > 0.6) {
+                ballZVelovity = self.jump.z * multiplier / 400;
+            }
+            
+            if ((z > 0)||(ballZVelovity > 0)) {
+                
+                imageView.frame.size.width = imageWidth * CGFloat(1 + z / 100)
+                imageView.frame.size.height = imageHeight * CGFloat(1 + z / 100)
+                z = z + ballZVelovity
+                ballZVelovity -= 0.2
+            }
+            
+            if (z < 0) {
+                z = 0
+                ballZVelovity = 0;
+                imageView.frame.size.width = imageWidth
+                imageView.frame.size.height = imageHeight
+                
+            }
             
 //            if (accelleration.z > -0.85) {
 //                imageView.image = UIImage.init(named: "ball2");

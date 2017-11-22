@@ -29,6 +29,8 @@ class ViewController: UIViewController {
         manager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
             
             self.ballView!.accelleration = (motion?.gravity)!
+            
+            self.ballView!.jump = (motion?.userAcceleration)!
     
             DispatchQueue.main.async {
                 self.ballView!.updateLocation(multiplier: 1000)
