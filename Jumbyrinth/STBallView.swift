@@ -192,8 +192,16 @@ class STBallView: UIView {
         if (lastUpdateTime != nil) {
             let updatePeriod : Double = Date.init().timeIntervalSince(lastUpdateTime!)
             
-            ballXVelocity = ballXVelocity + accelleration.x * updatePeriod
-            ballYVelocity = ballYVelocity + accelleration.y * updatePeriod
+            if (z == 0) {
+                ballXVelocity = ballXVelocity + accelleration.x * updatePeriod
+                ballYVelocity = ballYVelocity + accelleration.y * updatePeriod
+            }
+            else {
+                ballXVelocity = ballXVelocity + accelleration.x * updatePeriod * 0.3
+                ballYVelocity = ballYVelocity + accelleration.y * updatePeriod * 0.3
+            }
+            
+            
             if (ballXVelocity > 0.3) {ballXVelocity = 0.3}
             
             if (ballXVelocity < -0.3) {ballXVelocity = -0.3}
@@ -211,7 +219,7 @@ class STBallView: UIView {
                 imageView.frame.size.width = imageWidth * CGFloat(1 + z / 100)
                 imageView.frame.size.height = imageHeight * CGFloat(1 + z / 100)
                 z = z + ballZVelovity
-                ballZVelovity -= 0.2
+                ballZVelovity -= 0.3
             }
             
             if (z < 0) {
