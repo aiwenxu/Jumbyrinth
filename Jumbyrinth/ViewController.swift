@@ -55,7 +55,7 @@ class ViewController: UIViewController {
                     
                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreDisplay")
 
-                    
+                    self.view.alpha = 0.5
                     vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                     vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                     self.present(vc, animated: true, completion: nil)

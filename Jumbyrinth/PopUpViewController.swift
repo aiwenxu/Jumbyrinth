@@ -15,13 +15,9 @@ class PopUpViewController: UIViewController {
     
     @IBAction func dismiss(_ sender: Any) {
         
-       
-    self.presentingViewController!.presentingViewController?.dismiss(animated: true, completion: nil)
-        
-        
-        //dismiss(animated: true, completion: nil)
-        
-        
+        dismiss(animated: false, completion: nil)
+        self.presentingViewController!.presentingViewController?.dismiss(animated: false, completion: nil)
+
     }
     override func viewDidLoad() {
         super.viewDidLoad()
