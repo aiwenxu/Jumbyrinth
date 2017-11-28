@@ -71,7 +71,7 @@
         <!--Pop Up View Controller-->
         <scene sceneID="f1R-iD-swZ">
             <objects>
-                <viewController id="Yu8-bE-Knm" customClass="PopUpViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="scoreDisplay" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Yu8-bE-Knm" customClass="PopUpViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Mc8-EH-ibw"/>
                         <viewControllerLayoutGuide type="bottom" id="RqK-03-JsU"/>

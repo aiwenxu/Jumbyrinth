@@ -49,13 +49,18 @@ class ViewController: UIViewController {
                 
                 if ((self.ballView!.currentPoint.x < self.ballView!.bounds.maxX)&&(self.ballView!.currentPoint.x > self.ballView!.bounds.maxX - 20)&&(self.ballView!.currentPoint.y < self.ballView!.bounds.maxY)&&(self.ballView!.currentPoint.y > self.ballView!.bounds.maxY - 20)) {
                     
-                    //TODO: fix the picture
-                    
                     self.timer.invalidate()
                     
-                    //TODO: page pop up
-                    // let vc = PopUpViewController()
-                    // self.present(vc, animated: false, completion: nil)
+                    //TODO: pass end time
+                    
+                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreDisplay")
+
+                    
+                    vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                    vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                    self.present(vc, animated: true, completion: nil)
+                    
+                    self.manager.stopDeviceMotionUpdates()
                 }
             }
         }
