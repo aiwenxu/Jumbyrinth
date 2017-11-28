@@ -119,8 +119,14 @@ class STBallView: UIView {
         drawVLine(x: Int(self.bounds.width - 1), y: 0, length: Int(self.bounds.height))
         drawHLine(x: 30, y: 0, length: Int(self.bounds.width - 30))
         drawHLine(x: 0, y: Int(self.bounds.height - 1), length: Int(self.bounds.width - 30))
-
         
+        mazeLevel1();
+    }
+    
+    
+    //TODO: draw more mazes using the following format
+    
+    private func mazeLevel1() {
         drawHLine(x: 90, y: 60, length: 100)
         drawVLine(x: 90, y: 60, length: 110)
         drawVLine(x: 120, y: 60, length: 140)
@@ -182,7 +188,6 @@ class STBallView: UIView {
       backgroundColor = UIColor.lightGray
       imageView.image = UIImage.init(named: "ball")
         addSubview(imageView)
-        
         currentPoint = CGPoint(x: imageWidth/2, y: imageHeight/2)
         imageView.center = currentPoint
     }
@@ -229,14 +234,6 @@ class STBallView: UIView {
                 imageView.frame.size.height = imageHeight
                 
             }
-            
-//            if (accelleration.z > -0.85) {
-//                imageView.image = UIImage.init(named: "ball2");
-//            }
-//
-//            if (accelleration.z < -0.98) {
-//                imageView.image = UIImage.init(named: "ball");
-//            }w
             
             let coefficient = updatePeriod * multiplier
             currentPoint = CGPoint(x: currentPoint.x + (CGFloat)(ballXVelocity * coefficient), y: currentPoint.y - (CGFloat)(ballYVelocity * coefficient))

@@ -19,6 +19,7 @@
 		7A601CF21FC51297004686AD /* JumbyrinthUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601CF11FC51297004686AD /* JumbyrinthUITests.swift */; };
 		7A601D011FC5136C004686AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601CFF1FC5136C004686AD /* ViewController.swift */; };
 		7A601D021FC5136C004686AD /* STBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601D001FC5136C004686AD /* STBallView.swift */; };
+		7AC16C2D1FCD265E0042C624 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC16C2C1FCD265E0042C624 /* PopUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		7A601CF31FC51297004686AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A601CFF1FC5136C004686AD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7A601D001FC5136C004686AD /* STBallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STBallView.swift; sourceTree = "<group>"; };
+		7AC16C2C1FCD265E0042C624 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				7A601CD11FC51296004686AD /* GameScene.swift */,
 				7A601CD31FC51296004686AD /* GameViewController.swift */,
 				7A601CD51FC51296004686AD /* Main.storyboard */,
+				7AC16C2C1FCD265E0042C624 /* PopUpViewController.swift */,
 				7A601CD81FC51296004686AD /* Assets.xcassets */,
 				7A601D001FC5136C004686AD /* STBallView.swift */,
 				7A601CFF1FC5136C004686AD /* ViewController.swift */,
@@ -278,6 +281,7 @@
 			files = (
 				7A601CD21FC51296004686AD /* GameScene.swift in Sources */,
 				7A601CD41FC51296004686AD /* GameViewController.swift in Sources */,
+				7AC16C2D1FCD265E0042C624 /* PopUpViewController.swift in Sources */,
 				7A601D011FC5136C004686AD /* ViewController.swift in Sources */,
 				7A601CCC1FC51296004686AD /* AppDelegate.swift in Sources */,
 				7A601D021FC5136C004686AD /* STBallView.swift in Sources */,
