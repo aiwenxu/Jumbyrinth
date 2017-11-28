@@ -4,9 +4,14 @@ import CoreMotion
 class ViewController: UIViewController {
     
     var manager = CMMotionManager()
+    
     var ballView : STBallView?
-    @IBOutlet weak var playground: UIView!
+    
+    var sunView : SunMoonView?
+
     @IBOutlet weak var timeDisplay: UILabel!
+    @IBOutlet weak var sun: UIView!
+    @IBOutlet weak var playground: UIView!
     
     var seconds = 0
     var timer = Timer()
@@ -15,6 +20,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         ballView = STBallView.init(frame: playground.bounds)
+        
+        sunView = SunMoonView.init(frame: sun.bounds)
         
         playBall()
     }
@@ -31,8 +38,11 @@ class ViewController: UIViewController {
     private func playBall() {
         runTimer()
         
+        
+        
         ballView!.backgroundColor = UIColor.clear
         self.playground.addSubview(ballView!)
+        self.sun.addSubview(sunView!)
         
         manager.deviceMotionUpdateInterval = 1 / 60
         
