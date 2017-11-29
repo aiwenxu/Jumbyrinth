@@ -44,9 +44,13 @@ class SunMoonView: UIView, CLLocationManagerDelegate {
             
             if ((sunrise.compare(Date()) == ComparisonResult.orderedAscending)&&(sunset.compare(Date()) == ComparisonResult.orderedDescending)) {
                 self.imageView.image = UIImage.init(named: "Sun");
+                self.currentPoint = CGPoint(x: (-CGFloat(sunrise.timeIntervalSinceNow)) / CGFloat(sunset.timeIntervalSince(sunrise)) * bounds.maxX, y: bounds.maxY/2)
+                print(currentPoint)
             }
             else {
                 self.imageView.image = UIImage.init(named: "Moon");
+                self.currentPoint = CGPoint(x: (1 - (CGFloat(sunrise.timeIntervalSinceNow)) / (CGFloat(86400) -  CGFloat(sunset.timeIntervalSince(sunrise)))) * bounds.maxX, y: bounds.maxY/2)
+                print(currentPoint)
             }
             
             //TODO: change icon based on the weather
@@ -61,8 +65,8 @@ class SunMoonView: UIView, CLLocationManagerDelegate {
     
     private func setupUI() {
         
-        self.imageView.image = UIImage.init(named: "Sun");
-        
+        currentPoint = CGPoint(x: -100, y: bounds.maxY/2)
+    
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -79,16 +83,11 @@ class SunMoonView: UIView, CLLocationManagerDelegate {
         }
         catch {}
         
-        let date = Date()
-        let calendar = Calendar.current
-        let minute = calendar.component(.minute, from: date) + calendar.component(.hour, from: date) * 60
+        addSubview(self.imageView)
         
-        addSubview(imageView)
-        currentPoint = CGPoint(x: (CGFloat.init(integerLiteral: minute) / CGFloat.init(integerLiteral: 24 * 60)) * bounds.maxX, y: bounds.maxY/2)
+        self.imageView.center = self.currentPoint
         
-        print(minute)
-        
-        imageView.center = currentPoint
+        //print(minute)
         
         manager.stopUpdatingLocation()
 
