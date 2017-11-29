@@ -20,15 +20,16 @@ class PauseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func ReturnPushed(_ sender: Any) {
+        let vc = self.presentingViewController!.presentingViewController!
+        vc.dismiss(animated: false, completion: nil)
+    }
+    
     @IBAction func resumePushed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         let vc = self.presentingViewController as! ViewController
         vc.view.alpha = 1
         vc.playBall()
-        
-        print(vc.ballView?.currentPoint as Any)
-        
-        
     }
    
     /*

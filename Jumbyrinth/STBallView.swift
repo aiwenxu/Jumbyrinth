@@ -32,12 +32,12 @@ class STBallView: UIView {
                 ballXVelocity = -ballXVelocity * 0.5
             }
             
-            if currentPoint.x >= bounds.size.width - imageWidth / 2 {
+            else if currentPoint.x >= bounds.size.width - imageWidth / 2 {
                 currentPoint.x = bounds.size.width - imageWidth / 2
                 ballXVelocity = -ballXVelocity * 0.5
             }
             
-            if (self.z < 0.5) {
+            else if (self.z < 0.5) {
             
                 for i in 0...Int(imageWidth / 2) {
                     if (Int(currentPoint.x) + i >= Int(bounds.size.width)) {
@@ -59,36 +59,22 @@ class STBallView: UIView {
                         break
                     }
                     
-                    
-                
-//                    else {
-//
-//                        if self.bits[Int(currentPoint.y)][Int(currentPoint.x) + i] {
-//                            ballXVelocity = min(ballXVelocity, 0.1)
-//                            break
-//                        }
-//
-//                        if self.bits[Int(currentPoint.y)][Int(currentPoint.x) - i] {
-//                            ballXVelocity = max(ballXVelocity, -0.1)
-//                            break
-//                        }
-//                    }
                 }
             }
             
-            if currentPoint.y <= imageHeight / 2 {
+            if (currentPoint.y <= imageHeight / 2) {
                 currentPoint.y = imageHeight / 2
                 ballYVelocity = -ballYVelocity * 0.5
 
             }
             
-            if currentPoint.y >= bounds.size.height - imageHeight / 2 {
+            else if (currentPoint.y >= bounds.size.height - imageHeight / 2) {
                 currentPoint.y = bounds.size.height - imageHeight / 2
                 ballYVelocity = -ballYVelocity * 0.5
             }
             
             
-            if (self.z < 0.5) {
+            else if (self.z < 0.5) {
                 for i in 0...Int(imageHeight / 2) {
                     if (Int(currentPoint.y) + i >= Int(bounds.size.height)) {
                         break
@@ -110,18 +96,6 @@ class STBallView: UIView {
                         break
                     }
                     
-                       
-//                    else {
-//                        if self.bits[Int(currentPoint.y) + i][Int(currentPoint.x)] {
-//                            ballYVelocity = min(ballYVelocity, 0.1)
-//                            break
-//                        }
-//
-//                        if self.bits[Int(currentPoint.y) - i][Int(currentPoint.x)] {
-//                            ballYVelocity = max(ballYVelocity, -0.1)
-//                            break
-//                        }
-//                    }
                 }
             }
 

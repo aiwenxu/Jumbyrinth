@@ -14,6 +14,23 @@ class PopUpViewController: UIViewController {
     
     //TODO: print finish time in PopUpViewController
     
+    @IBAction func again(_ sender: Any) {
+        
+        //let mainvc = self.presentingViewController!.presentingViewController!.presentingViewController
+        
+        dismiss(animated: false, completion: nil)
+    self.presentingViewController!.presentingViewController?.dismiss(animated: false, completion: nil)
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameScene")
+        
+//        vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+//        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+//        
+//        mainvc?.present(vc, animated: true, completion: nil)
+
+
+    }
+    
     @IBAction func dismiss(_ sender: Any) {
         
         dismiss(animated: false, completion: nil)
