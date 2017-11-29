@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import CoreLocation
 
-//TODO: read weather data
-
 class SunMoonView: UIView, CLLocationManagerDelegate {
     
     var manager:CLLocationManager!

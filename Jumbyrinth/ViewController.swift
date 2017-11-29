@@ -22,8 +22,17 @@ class ViewController: UIViewController {
         ballView = STBallView.init(frame: playground.bounds)
         
         sunView = SunMoonView.init(frame: sun.bounds)
-        
+     
         playBall()
+    }
+    
+    @IBAction func pausePushed(_ sender: Any) {
+        
+        self.ballView?.ballXVelocity = 0
+        self.ballView?.ballYVelocity = 0
+        self.manager.stopDeviceMotionUpdates()
+        self.timer.invalidate()
+        print(self.ballView?.currentPoint as Any)
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,11 +44,8 @@ class ViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    private func playBall() {
+    public func playBall() {
         runTimer()
-        
-        
-        
         ballView!.backgroundColor = UIColor.clear
         self.playground.addSubview(ballView!)
         self.sun.addSubview(sunView!)

@@ -38,18 +38,26 @@ class STBallView: UIView {
             
             if (self.z < 0.5) {
             
-                for i in 0...Int(imageHeight/2) {
+                for i in 0...Int(imageWidth/2) {
                     if (Int(currentPoint.x) + i >= Int(bounds.size.width)) {
                         break
                     }
+                    if (Int(currentPoint.x) - i <= 0) {
+                        break
+                    }
+//                    if (Int(currentPoint.y) <= 0) {
+//                        currentPoint.y = imageHeight/2
+//                    }
+//
+//                    if (currentPoint.y >= bounds.height) {
+//                        currentPoint.y = bounds.height - 1 - imageHeight/2
+//                    }
+                    
                     if self.bits[Int(currentPoint.y)][Int(currentPoint.x) + i] {
                         ballXVelocity = min(-0.02, -ballXVelocity * 0.5)
                         break
                     }
                     
-                    if (Int(currentPoint.x) - i <= 0) {
-                        break
-                    }
                     if self.bits[Int(currentPoint.y)][Int(currentPoint.x) - i] {
                         ballXVelocity = max(0.02, -ballXVelocity * 0.5)
                         break
@@ -57,7 +65,7 @@ class STBallView: UIView {
                 }
             }
             
-            if currentPoint.y <= imageWidth / 2 {
+            if currentPoint.y <= imageHeight / 2 {
                 currentPoint.y = imageHeight / 2
                 ballYVelocity = -ballYVelocity * 0.5
 
@@ -74,14 +82,26 @@ class STBallView: UIView {
                     if (Int(currentPoint.y) + i >= Int(bounds.size.height)) {
                         break
                     }
+                    if (Int(currentPoint.y) - i <= 0)
+                    {
+                        break
+                    }
+//
+//                    if (Int(currentPoint.x) <= 0) {
+//                        currentPoint.x = imageWidth/2
+//                    }
+//
+//                    if (currentPoint.x >= bounds.width) {
+//                        currentPoint.x = bounds.width - 1 - imageWidth/2
+//                    }
+                    
                     if self.bits[Int(currentPoint.y) + i][Int(currentPoint.x)] {
                         ballYVelocity = max(0.02, -ballYVelocity * 0.5)
                         break
                     }
 
-                    if (Int(currentPoint.y) - i <= 0) {
-                        break
-                    }
+                    
+                    
                     if self.bits[Int(currentPoint.y) - i][Int(currentPoint.x)] {
                         ballYVelocity = min(-0.02, -ballYVelocity * 0.5)
                         break
@@ -168,7 +188,7 @@ class STBallView: UIView {
     
     private func drawHLine(x : Int, y : Int, length : Int) {
         let line = UIView(frame: CGRect(x: x, y: max(y - 1, 0), width: length, height: 3))
-        line.backgroundColor = UIColor.darkGray
+        line.backgroundColor = UIColor.cyan
         self.addSubview(line)
         for i in x...x+length {
             self.bits[y][i] = true
