@@ -1,6 +1,7 @@
 
 import UIKit
 import CoreMotion
+import GameplayKit.GKRandomSource
 
 class STBallView: UIView {
 
@@ -131,7 +132,8 @@ class STBallView: UIView {
         drawHLine(x: 30, y: 0, length: Int(self.bounds.width - 30))
         drawHLine(x: 0, y: Int(self.bounds.height - 1), length: Int(self.bounds.width - 30))
         
-        mazeLevel1();
+        makeRandomMaze(numOfRows: 25, numOfCols: 15)
+//        mazeLevel1();
     }
     
     
@@ -175,6 +177,61 @@ class STBallView: UIView {
         drawHLine(x: 170, y: 225, length: 20)
         drawHLine(x: 150, y: 170, length: 20)
         drawHLine(x: 150, y: 110, length: 20)
+    }
+    
+    private func makeRandomMaze(numOfRows: Int, numOfCols: Int) {
+
+        var cells : [[Int]] = []
+        for row in 0..<numOfRows {
+            cells.append([Int]())
+            for _ in 0..<numOfCols {
+                cells[row].append(0)
+            }
+        }
+        
+        carvePassage(cx: 0, cy: 0, cells: &cells)
+        
+        let cellWidth = Int(self.bounds.width)/numOfCols
+        let cellHeight = Int(self.bounds.height)/numOfRows
+        for col in 0..<numOfRows {
+            for row in 0..<numOfCols {
+                let x = row * cellWidth
+                let y = col * cellHeight
+                if (cells[col][row] & 1) == 0 {
+                    drawHLine(x: x, y: y, length: cellWidth)
+                }
+                if (cells[col][row] & 8 == 0) {
+                    drawVLine(x: x, y: y, length: cellHeight)
+                }
+            }
+        }
+        
+    }
+    
+    private func carvePassage(cx: Int, cy: Int, cells: inout [[Int]]) {
+        
+        let N : Int = 1
+        let S : Int = 2
+        let E : Int = 4
+        let W : Int = 8
+        let dx = [N: 0, S: 0, E: 1, W: -1]
+        let dy = [N: -1, S: 1, E: 0, W: 0]
+        let opposite = [N: S, S: N, E: W, W: E]
+        
+        let shuffledDirections : [Int] = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [N, S, E, W]) as! [Int]
+//        let shuffledDirections = [N, S, E, W]
+        for direction in shuffledDirections {
+            let nx = cx + dx[direction]!
+            let ny = cy + dy[direction]!
+            if (nx >= 0) && (nx <= cells[0].count - 1) && (ny >= 0) && (ny <= cells.count - 1) {
+                if (cells[ny][nx] == 0) {
+                    cells[cy][cx] |= direction
+                    cells[ny][nx] |= opposite[direction]!
+                    carvePassage(cx: nx, cy: ny, cells: &cells)
+                }
+                
+            }
+        }
     }
     
     private func drawHLine(x : Int, y : Int, length : Int) {
