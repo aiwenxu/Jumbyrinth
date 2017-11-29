@@ -16,19 +16,11 @@ class PopUpViewController: UIViewController {
     
     @IBAction func again(_ sender: Any) {
         
-        //let mainvc = self.presentingViewController!.presentingViewController!.presentingViewController
-        
         dismiss(animated: false, completion: nil)
-    self.presentingViewController!.presentingViewController?.dismiss(animated: false, completion: nil)
         
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "gameScene")
-        
-//        vc.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-//        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-//        
-//        mainvc?.present(vc, animated: true, completion: nil)
-
-
+        let vc = self.presentingViewController as! ViewController
+        vc.ballView?.currentPoint = CGPoint(x: 10, y: 10)
+        vc.viewDidLoad()
     }
     
     @IBAction func dismiss(_ sender: Any) {

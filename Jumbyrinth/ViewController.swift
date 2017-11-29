@@ -5,24 +5,30 @@ class ViewController: UIViewController {
     
     var manager = CMMotionManager()
     
-    var ballView : STBallView?
+    var set = false
     
+    var ballView : STBallView?
     var sunView : SunMoonView?
 
     @IBOutlet weak var timeDisplay: UILabel!
     @IBOutlet weak var sun: UIView!
     @IBOutlet weak var playground: UIView!
     
-    var seconds = 0
+    var seconds : Int = 0
     var timer = Timer()
     
     override func viewDidLoad() {
+        
+        seconds = 0
+        self.view.alpha = 1
+        
         super.viewDidLoad()
         
-        ballView = STBallView.init(frame: playground.bounds)
-        
-        sunView = SunMoonView.init(frame: sun.bounds)
-     
+        if (!set) {
+            ballView = STBallView.init(frame: playground.bounds)
+            sunView = SunMoonView.init(frame: sun.bounds)
+            set = true
+        }
         playBall()
     }
     
@@ -75,6 +81,7 @@ class ViewController: UIViewController {
                     self.present(vc, animated: true, completion: nil)
                 
                     vc.time.text = self.timeDisplay.text!
+                    self.ballView?.pause = true
                     
                 }
             }
