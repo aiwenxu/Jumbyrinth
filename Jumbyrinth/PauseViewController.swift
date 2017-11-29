@@ -23,9 +23,11 @@ class PauseViewController: UIViewController {
     @IBAction func resumePushed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         let vc = self.presentingViewController as! ViewController
+        vc.view.alpha = 1
         vc.playBall()
-        print(vc.ballView?.accelleration as Any)
+        
         print(vc.ballView?.currentPoint as Any)
+        
         
     }
    

@@ -28,10 +28,10 @@ class ViewController: UIViewController {
     
     @IBAction func pausePushed(_ sender: Any) {
         
-        self.ballView?.ballXVelocity = 0
-        self.ballView?.ballYVelocity = 0
+        self.view.alpha = 0.5
         self.manager.stopDeviceMotionUpdates()
         self.timer.invalidate()
+        self.ballView?.pause = true
         print(self.ballView?.currentPoint as Any)
     }
     
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
                     
                     let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreDisplay") as! PopUpViewController
 
-                    self.view.alpha = 0.5
+                    self.view.alpha = 0.3
                     vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
                     vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                     self.present(vc, animated: true, completion: nil)

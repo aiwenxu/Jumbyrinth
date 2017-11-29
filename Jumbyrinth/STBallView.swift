@@ -13,6 +13,7 @@ class STBallView: UIView {
     var jump = CMAcceleration()
     var imageView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
     
+    var pause : Bool
 
     var ballXVelocity : Double = 0
     var ballYVelocity : Double = 0
@@ -115,6 +116,7 @@ class STBallView: UIView {
     }
     
     override init(frame: CGRect) {
+        pause = false
         super.init(frame: frame)
         for _ in 0...(Int(frame.height) + 1) {
             var ww = [Bool]()
@@ -188,7 +190,7 @@ class STBallView: UIView {
     
     private func drawHLine(x : Int, y : Int, length : Int) {
         let line = UIView(frame: CGRect(x: x, y: max(y - 1, 0), width: length, height: 3))
-        line.backgroundColor = UIColor.cyan
+        line.backgroundColor = UIColor.gray
         self.addSubview(line)
         for i in x...x+length {
             self.bits[y][i] = true
@@ -197,7 +199,7 @@ class STBallView: UIView {
     
     private func drawVLine(x : Int, y : Int, length : Int) {
         let line = UIView(frame: CGRect(x: max(0, x - 1), y: y, width: 3, height: length))
-        line.backgroundColor = UIColor.darkGray
+        line.backgroundColor = UIColor.gray
         self.addSubview(line)
         for i in y...y+length {
             self.bits[i][x] = true
@@ -214,7 +216,7 @@ class STBallView: UIView {
     
     
     func updateLocation(multiplier : Double) {
-        if (lastUpdateTime != nil) {
+        if (lastUpdateTime != nil)&&(!pause) {
             let updatePeriod : Double = Date.init().timeIntervalSince(lastUpdateTime!)
             
             if (z == 0) {
@@ -259,6 +261,7 @@ class STBallView: UIView {
             currentPoint = CGPoint(x: currentPoint.x + (CGFloat)(ballXVelocity * coefficient), y: currentPoint.y - (CGFloat)(ballYVelocity * coefficient))
         }
         lastUpdateTime = Date()
+        pause = false
     }
 }
 
