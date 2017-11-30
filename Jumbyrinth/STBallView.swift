@@ -168,7 +168,7 @@ class STBallView: UIView {
         
         makeRandomMaze(numOfRows: 20, numOfCols: 12)
         
-        makeHoles(n: 10)
+        makeHoles(n: 25)
 //        mazeLevel1();
     }
     
