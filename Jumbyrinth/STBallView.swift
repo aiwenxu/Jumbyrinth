@@ -6,6 +6,8 @@ import GameplayKit.GKRandomSource
 class STBallView: UIView {
 
     var lastUpdateTime: Date? = nil
+    var holes = [CGPoint]()
+    var inhole = false
     
     var imageWidth : CGFloat = 20
     var imageHeight : CGFloat = 20
@@ -102,6 +104,37 @@ class STBallView: UIView {
 
             
             imageView.center = currentPoint
+            
+            var holeNum = -1
+            
+            var inholenow = false
+            
+            for i in 0...(holes.count - 1) {
+                if (distance(holes[i], currentPoint) < 8) {
+                    inholenow = true
+                    holeNum = i
+                    break
+                }
+            }
+            
+            if (inhole) {
+                if (!inholenow) {
+                    inhole = false
+                }
+            }
+            else {
+                if (inholenow) {
+                    var d : Int
+                    repeat {
+                        d = Int(arc4random()) % holes.count
+                        print(d)
+                    } while d == holeNum
+                    currentPoint = holes[d]
+                    inhole = true
+                }
+            }
+            
+            imageView.center = currentPoint
         }
     }
     
@@ -116,8 +149,9 @@ class STBallView: UIView {
             self.bits.append(ww)
             
         }
-        setupUI()
+        
         makeMaze()
+        setupUI()
     }
     
     
@@ -132,7 +166,9 @@ class STBallView: UIView {
         drawHLine(x: 30, y: 0, length: Int(self.bounds.width - 30))
         drawHLine(x: 0, y: Int(self.bounds.height - 1), length: Int(self.bounds.width - 30))
         
-        makeRandomMaze(numOfRows: 25, numOfCols: 15)
+        makeRandomMaze(numOfRows: 20, numOfCols: 12)
+        
+        makeHoles(n: 10)
 //        mazeLevel1();
     }
     
@@ -234,6 +270,52 @@ class STBallView: UIView {
         }
     }
     
+    func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
+        let xDist = a.x - b.x
+        let yDist = a.y - b.y
+        return CGFloat(sqrt((xDist * xDist) + (yDist * yDist)))
+    }
+    
+    func makeHoles(n : Int) {
+        for _ in 1...n {
+            var x : Int
+            var y : Int
+            repeat {
+                x = Int(arc4random_uniform(UInt32(bounds.width - imageWidth))) + Int(imageWidth / 2)
+                y = Int(arc4random_uniform(UInt32(bounds.height - imageHeight))) + Int(imageHeight / 2)
+            } while !isValidHole(x: x, y: y)
+            makeHole(x: x, y: y)
+        }
+    }
+    
+    func isValidHole(x : Int, y : Int) -> Bool {
+        
+        let this = CGPoint(x: CGFloat(x), y: CGFloat(y))
+        
+        if (distance(this, CGPoint(x: imageWidth/2, y: imageHeight/2)) <= 20) {
+            return false;
+        }
+        
+        if (distance(this, CGPoint(x: self.bounds.width - imageWidth/2, y: self.bounds.height - imageHeight/2)) <= 20) {
+            return false;
+        }
+        
+        for h in holes {
+            if (distance(this, h) <= 20) {
+                return false
+            }
+        }
+        return true
+    }
+
+    private func makeHole(x: Int, y: Int) {
+        let hole = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
+        hole.image = UIImage.init(named: "blackhole")
+        addSubview(hole)
+        hole.center = CGPoint(x: CGFloat(x), y: CGFloat(y))
+        self.holes.append(hole.center)
+    }
+    
     private func drawHLine(x : Int, y : Int, length : Int) {
         let line = UIView(frame: CGRect(x: x, y: max(y - 1, 0), width: length, height: 3))
         line.backgroundColor = UIColor.gray
@@ -293,7 +375,7 @@ class STBallView: UIView {
                 imageView.frame.size.width = imageWidth * CGFloat(1 + z / 100)
                 imageView.frame.size.height = imageHeight * CGFloat(1 + z / 100)
                 z = z + ballZVelovity
-                ballZVelovity -= 0.3
+                ballZVelovity -= 0.7
             }
             
             if (z < 0) {

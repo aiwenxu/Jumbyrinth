@@ -42,12 +42,20 @@ class SunMoonView: UIView, CLLocationManagerDelegate {
             
             if ((sunrise.compare(Date()) == ComparisonResult.orderedAscending)&&(sunset.compare(Date()) == ComparisonResult.orderedDescending)) {
                 self.imageView.image = UIImage.init(named: "Sun");
+                print("sun")
                 self.currentPoint = CGPoint(x: (-CGFloat(sunrise.timeIntervalSinceNow)) / CGFloat(sunset.timeIntervalSince(sunrise)) * bounds.maxX, y: bounds.maxY/2)
+                print(currentPoint)
+            }
+            else if (sunrise.compare(Date()) == ComparisonResult.orderedDescending){
+                self.imageView.image = UIImage.init(named: "Moon");
+                print("Moon")
+                self.currentPoint = CGPoint(x: (1 - (CGFloat(sunrise.timeIntervalSinceNow)) / (CGFloat(86400) -  CGFloat(sunset.timeIntervalSince(sunrise)))) * bounds.maxX, y: bounds.maxY/2)
                 print(currentPoint)
             }
             else {
                 self.imageView.image = UIImage.init(named: "Moon");
-                self.currentPoint = CGPoint(x: (1 - (CGFloat(sunrise.timeIntervalSinceNow)) / (CGFloat(86400) -  CGFloat(sunset.timeIntervalSince(sunrise)))) * bounds.maxX, y: bounds.maxY/2)
+                print("Moon")
+                self.currentPoint = CGPoint(x: (CGFloat(-sunset.timeIntervalSinceNow) / (CGFloat(86400) -  CGFloat(sunset.timeIntervalSince(sunrise)))) * bounds.maxX, y: bounds.maxY/2)
                 print(currentPoint)
             }
             

@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         self.playground.addSubview(ballView!)
         self.sun.addSubview(sunView!)
         
-        manager.deviceMotionUpdateInterval = 1 / 60
+        manager.deviceMotionUpdateInterval = 1 / 24
         
         manager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
             
