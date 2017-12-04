@@ -82,7 +82,6 @@ class ViewController: UIViewController {
                 
                     vc.time.text = self.timeDisplay.text!
                     self.ballView?.pause = true
-                    
                 }
             }
         }
