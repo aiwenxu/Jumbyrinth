@@ -20,6 +20,7 @@
 		7A601D011FC5136C004686AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601CFF1FC5136C004686AD /* ViewController.swift */; };
 		7A601D021FC5136C004686AD /* STBallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601D001FC5136C004686AD /* STBallView.swift */; };
 		7AC16C2D1FCD265E0042C624 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC16C2C1FCD265E0042C624 /* PopUpViewController.swift */; };
+		A08BDDB01FD59C0E009346CB /* LevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08BDDAF1FD59C0E009346CB /* LevelViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		7A601CFF1FC5136C004686AD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7A601D001FC5136C004686AD /* STBallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STBallView.swift; sourceTree = "<group>"; };
 		7AC16C2C1FCD265E0042C624 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		A08BDDAF1FD59C0E009346CB /* LevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				7A601CD11FC51296004686AD /* GameScene.swift */,
 				7A601CD31FC51296004686AD /* GameViewController.swift */,
 				7A601CD51FC51296004686AD /* Main.storyboard */,
+				A08BDDAF1FD59C0E009346CB /* LevelViewController.swift */,
 				7A4980CB1FCF194600939CD8 /* PauseViewController.swift */,
 				7AC16C2C1FCD265E0042C624 /* PopUpViewController.swift */,
 				7A601CD81FC51296004686AD /* Assets.xcassets */,
@@ -280,6 +283,7 @@
 				7A601CD21FC51296004686AD /* GameScene.swift in Sources */,
 				7A4980CC1FCF194600939CD8 /* PauseViewController.swift in Sources */,
 				7A601CD41FC51296004686AD /* GameViewController.swift in Sources */,
+				A08BDDB01FD59C0E009346CB /* LevelViewController.swift in Sources */,
 				7A0871FF1FCE07020007DA29 /* SunMoonView.swift in Sources */,
 				7AC16C2D1FCD265E0042C624 /* PopUpViewController.swift in Sources */,
 				7A601D011FC5136C004686AD /* ViewController.swift in Sources */,

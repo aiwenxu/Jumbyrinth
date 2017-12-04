@@ -81,11 +81,11 @@ class SunMoonView: UIView, CLLocationManagerDelegate {
         
         let loc = manager.location?.coordinate
         
-        let weatherUrl = URL(string: String(format: "https://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&APPID=705a4acb14b320b3657d6cd1e9206db6", Double((loc?.latitude)!), Double((loc?.longitude)!)))
+//        let weatherUrl = URL(string: String(format: "https://api.openweathermap.org/data/2.5/weather?lat=%f&lon=%f&APPID=705a4acb14b320b3657d6cd1e9206db6", Double((loc?.latitude)!), Double((loc?.longitude)!)))
         
         do {
-            let data = try Data(contentsOf: weatherUrl!)
-            self.loadWeather(data: data)
+//            let data = try Data(contentsOf: weatherUrl!)
+//            self.loadWeather(data: data)
         }
         catch {}
         

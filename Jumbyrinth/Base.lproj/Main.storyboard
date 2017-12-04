@@ -38,7 +38,7 @@
                                 <rect key="frame" x="302" y="544" width="37" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-xX-ff7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-xX-ff7">
                                 <rect key="frame" x="139" y="28" width="97" height="59"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
@@ -73,6 +73,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="IfT-yV-xrP"/>
                     <connections>
+                        <outlet property="levelLabel" destination="Zfb-xX-ff7" id="VBt-Oc-UDZ"/>
                         <outlet property="playground" destination="ZH5-T1-5tM" id="ZCb-Pc-OYW"/>
                         <outlet property="sun" destination="BZ2-D1-qzG" id="kFH-LZ-8aJ"/>
                         <outlet property="timeDisplay" destination="NUT-PU-oj0" id="KXN-pv-0dG"/>
@@ -222,7 +223,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="crossDissolve" id="X1J-ge-39Y"/>
+                                    <segue destination="hWG-0x-Jv1" kind="presentation" id="9iu-nx-ehZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxW-nY-qME">
@@ -239,10 +240,148 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbI-Yz-cdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="808.24587706146929"/>
+            <point key="canvasLocation" x="-372" y="807"/>
+        </scene>
+        <!--Level View Controller-->
+        <scene sceneID="ieN-Xf-rL7">
+            <objects>
+                <viewController id="hWG-0x-Jv1" customClass="LevelViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kQW-4x-z36"/>
+                        <viewControllerLayoutGuide type="bottom" id="VZo-ta-Ayo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ujH-9X-nRb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHu-t7-74O">
+                                <rect key="frame" x="155" y="253" width="65" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                <state key="normal" title="Level 3">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level3" id="XOq-uZ-57a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsj-5t-MiM">
+                                <rect key="frame" x="149" y="127" width="65" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                <state key="normal" title="Level 2">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level2" id="Wu5-TS-cfR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-Cs-C0M">
+                                <rect key="frame" x="155" y="356.5" width="65" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                <state key="normal" title="Level 4">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level4" id="LY5-RM-z7L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMp-Pe-kJn">
+                                <rect key="frame" x="155" y="460" width="65" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                <state key="normal" title="Level 5">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level5" id="MdM-cT-S7k"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zh-f0-e3J">
+                                <rect key="frame" x="130" y="563.5" width="115" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                <state key="normal" title="Surprise me!">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="surprise" id="oJW-lN-gpw"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jte-yL-iL6">
+                                <rect key="frame" x="91" y="614" width="220" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="aPJ-6B-jbI"/>
+                                    <constraint firstAttribute="height" constant="33" id="dPf-Cm-jSA"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ro-aq-WAM">
+                                <rect key="frame" x="91" y="522" width="220" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="Zdl-f8-wpd"/>
+                                    <constraint firstAttribute="width" constant="220" id="ylg-JU-7uR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KqP-qb-hnU">
+                                <rect key="frame" x="91" y="403" width="220" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="k8N-wf-WbD"/>
+                                    <constraint firstAttribute="height" constant="33" id="nqZ-Z8-V4N"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="foT-bG-5sJ">
+                                <rect key="frame" x="77" y="86" width="220" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="Maw-FU-VhR"/>
+                                    <constraint firstAttribute="width" constant="220" id="P4E-1N-42G"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ytn-5b-KAp">
+                                <rect key="frame" x="77" y="189" width="220" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="Fr4-Yj-XEB"/>
+                                    <constraint firstAttribute="height" constant="33" id="dT8-EQ-LHU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6C5-rG-cZq">
+                                <rect key="frame" x="91" y="315" width="220" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="37C-Ju-l9U"/>
+                                    <constraint firstAttribute="width" constant="220" id="GmG-31-X4v"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GWH-oE-ZTp">
+                                <rect key="frame" x="77" y="5" width="220" height="26"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="6gc-rO-m9P"/>
+                                    <constraint firstAttribute="width" constant="220" id="Dex-Kb-EG4"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ix-xZ-iyI">
+                                <rect key="frame" x="153" y="39" width="61" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                <state key="normal" title="Level 1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level1" id="PFc-g8-o3a"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.091512353369999994" green="0.76631454330000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVP-jO-Yrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="440.80000000000001" y="805.54722638680664"/>
         </scene>
     </scenes>
     <resources>
         <image name="direction" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oJW-lN-gpw"/>
+    </inferredMetricsTieBreakers>
 </document>
