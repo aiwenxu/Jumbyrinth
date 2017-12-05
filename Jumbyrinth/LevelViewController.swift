@@ -18,7 +18,7 @@ class LevelViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        colorview.runTimer()
+        colorview.runUpdateTimer()
 
         // Do any additional setup after loading the view.
     }

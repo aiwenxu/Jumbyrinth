@@ -20,31 +20,35 @@ class ColorfulView: UIView {
     }
     
     var timer = Timer()
+    var updateTime = Timer()
+    
     
     func runTimer() {
         
-        timer.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: (#selector(ColorfulView.updateTimer)), userInfo: nil, repeats: true)
         
     }
     
+    func runUpdateTimer() {
+        timer = Timer.scheduledTimer(timeInterval: 0.02, target: self, selector: (#selector(ColorfulView.updateColor)), userInfo: nil, repeats: true)
+    }
     
     @objc func updateTimer() {
         
         if (Static.now == "Blue") {
-            Static.blue += 0.0009
-            Static.red -= 0.0006
-            Static.green -= 0.0003
+            Static.blue += 0.0001
+            Static.red -= 0.00015
+            Static.green -= 0.00005
         }
         if (Static.now == "Red") {
-            Static.blue -= 0.0003
-            Static.red += 0.0009
-            Static.green -= 0.0006
+            Static.blue -= 0.00005
+            Static.red += 0.00015
+            Static.green -= 0.0001
         }
         if (Static.now == "Green") {
-            Static.blue -= 0.0006
-            Static.red -= 0.0003
-            Static.green += 0.0009
+            Static.blue -= 0.0001
+            Static.red -= 0.00005
+            Static.green += 0.00015
         }
         
         if (Static.red > 0.95) {
@@ -78,6 +82,9 @@ class ColorfulView: UIView {
         
     }
 
+    @objc func updateColor() {
+        self.backgroundColor = UIColor.init(red: CGFloat(Static.red), green: CGFloat(Static.green), blue: CGFloat(Static.blue), alpha: 1.0)
+    }
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

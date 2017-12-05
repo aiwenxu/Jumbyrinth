@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         
-        colorvie.runTimer()
+        colorvie.runUpdateTimer()
         
         if levelNumber == 6 {
             levelLabel.text = "Level X"
