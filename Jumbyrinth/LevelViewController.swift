@@ -10,6 +10,10 @@ import UIKit
 
 class LevelViewController: UIViewController {
 
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
