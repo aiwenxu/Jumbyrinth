@@ -106,6 +106,7 @@ class SunMoonView: UIView, CLLocationManagerDelegate {
         manager.startUpdatingLocation()
         
         
+
         
         let loc = manager.location?.coordinate
         

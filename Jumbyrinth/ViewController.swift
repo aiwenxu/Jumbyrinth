@@ -3,6 +3,8 @@ import CoreMotion
 
 class ViewController: UIViewController {
     
+    var levelNumber: Int = 0
+    
     var manager = CMMotionManager()
     
     var set = false
@@ -13,11 +15,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeDisplay: UILabel!
     @IBOutlet weak var sun: UIView!
     @IBOutlet weak var playground: UIView!
+    @IBOutlet weak var levelLabel: UILabel!
     
     var seconds : Int = 0
     var timer = Timer()
     
     override func viewDidLoad() {
+        
+        if levelNumber == 6 {
+            levelLabel.text = "Level X"
+        }
+        else {
+            levelLabel.text = String(format: "Level %d", levelNumber)
+        }
         
         seconds = 0
         self.view.alpha = 1
@@ -25,7 +35,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         if (!set) {
-            ballView = STBallView.init(frame: playground.bounds)
+            ballView = STBallView.init(frame: playground.bounds, levelNumber: levelNumber)
             sunView = SunMoonView.init(frame: sun.bounds)
             set = true
         }
