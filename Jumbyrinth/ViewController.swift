@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         if (!set) {
-            ballView = STBallView.init(frame: playground.bounds)
+            ballView = STBallView.init(frame: playground.bounds, levelNumber: levelNumber)
             sunView = SunMoonView.init(frame: sun.bounds)
             set = true
         }

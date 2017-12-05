@@ -1,9 +1,11 @@
 
 import UIKit
 import CoreMotion
-import GameplayKit.GKRandomSource
+import GameplayKit
 
 class STBallView: UIView {
+    
+    var levelNumber : Int = 0
 
     var lastUpdateTime: Date? = nil
     var holes = [CGPoint]()
@@ -138,7 +140,7 @@ class STBallView: UIView {
         }
     }
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, levelNumber: Int) {
         pause = false
         super.init(frame: frame)
         for _ in 0...(Int(frame.height) + 1) {
@@ -150,7 +152,7 @@ class STBallView: UIView {
             
         }
         
-        makeMaze()
+        makeMaze(levelNumber: levelNumber)
         setupUI()
     }
     
@@ -160,15 +162,48 @@ class STBallView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func makeMaze() {
+    private func makeMaze(levelNumber: Int) {
+        
         drawVLine(x: 0, y: 0, length: Int(self.bounds.height))
         drawVLine(x: Int(self.bounds.width - 1), y: 0, length: Int(self.bounds.height))
         drawHLine(x: 30, y: 0, length: Int(self.bounds.width - 30))
         drawHLine(x: 0, y: Int(self.bounds.height - 1), length: Int(self.bounds.width - 30))
         
-        makeRandomMaze(numOfRows: 20, numOfCols: 12)
+        if levelNumber == 1 {
+            makeRandomMaze(numOfRows: 10, numOfCols: 10, seeded: true)
+            makeHoles(n: 3)
+        }
+        else if levelNumber == 2 {
+            makeRandomMaze(numOfRows: 3, numOfCols: 3, seeded: true)
+            makeHoles(n: 3)
+        }
+        else if levelNumber == 3 {
+            makeRandomMaze(numOfRows: 3, numOfCols: 3, seeded: true)
+            makeHoles(n: 3)
+            
+        }
+        else if levelNumber == 4 {
+            makeRandomMaze(numOfRows: 3, numOfCols: 3, seeded: true)
+            makeHoles(n: 3)
+            
+        }
+        else if levelNumber == 5 {
+            makeRandomMaze(numOfRows: 3, numOfCols: 3, seeded: true)
+            makeHoles(n: 3)
+            
+        }
+        else if levelNumber == 6 {
+            let numOfRows = 20
+            let numOfCols = 12
+            let numOfHoles = 25
+            makeRandomMaze(numOfRows: numOfRows, numOfCols: numOfCols, seeded: false)
+            makeHoles(n: numOfHoles)
+        }
+
         
-        makeHoles(n: 25)
+//        makeRandomMaze(numOfRows: 20, numOfCols: 12)
+        
+//        makeHoles(n: 25)
 //        mazeLevel1();
     }
     
@@ -215,7 +250,7 @@ class STBallView: UIView {
         drawHLine(x: 150, y: 110, length: 20)
     }
     
-    private func makeRandomMaze(numOfRows: Int, numOfCols: Int) {
+    private func makeRandomMaze(numOfRows: Int, numOfCols: Int, seeded: Bool) {
 
         var cells : [[Int]] = []
         for row in 0..<numOfRows {
@@ -225,7 +260,7 @@ class STBallView: UIView {
             }
         }
         
-        carvePassage(cx: 0, cy: 0, cells: &cells)
+        carvePassage(seeded: seeded, cx: 0, cy: 0, cells: &cells)
         
         let cellWidth = Int(self.bounds.width)/numOfCols
         let cellHeight = Int(self.bounds.height)/numOfRows
@@ -244,7 +279,7 @@ class STBallView: UIView {
         
     }
     
-    private func carvePassage(cx: Int, cy: Int, cells: inout [[Int]]) {
+    private func carvePassage(seeded: Bool, cx: Int, cy: Int, cells: inout [[Int]]) {
         
         let N : Int = 1
         let S : Int = 2
@@ -254,8 +289,16 @@ class STBallView: UIView {
         let dy = [N: -1, S: 1, E: 0, W: 0]
         let opposite = [N: S, S: N, E: W, W: E]
         
-        let shuffledDirections : [Int] = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [N, S, E, W]) as! [Int]
-//        let shuffledDirections = [N, S, E, W]
+        var shuffledDirections : [Int] = []
+        
+        if seeded {
+            let randomSource = GKMersenneTwisterRandomSource.init(seed: 54748356234563257)
+            shuffledDirections = randomSource.arrayByShufflingObjects(in: [N, S, E, W]) as! [Int]
+        }
+        else {
+            shuffledDirections = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [N, S, E, W]) as! [Int]
+        }
+        
         for direction in shuffledDirections {
             let nx = cx + dx[direction]!
             let ny = cy + dy[direction]!
@@ -263,7 +306,7 @@ class STBallView: UIView {
                 if (cells[ny][nx] == 0) {
                     cells[cy][cx] |= direction
                     cells[ny][nx] |= opposite[direction]!
-                    carvePassage(cx: nx, cy: ny, cells: &cells)
+                    carvePassage(seeded: seeded, cx: nx, cy: ny, cells: &cells)
                 }
                 
             }
