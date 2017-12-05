@@ -16,11 +16,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var sun: UIView!
     @IBOutlet weak var playground: UIView!
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet var colorvie: ColorfulView!
     
     var seconds : Int = 0
     var timer = Timer()
     
     override func viewDidLoad() {
+        
+        colorvie.runTimer()
         
         if levelNumber == 6 {
             levelLabel.text = "Level X"
