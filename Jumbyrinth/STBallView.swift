@@ -170,29 +170,28 @@ class STBallView: UIView {
         drawHLine(x: 0, y: Int(self.bounds.height - 1), length: Int(self.bounds.width - 30))
         
         if levelNumber == 1 {
-            makeRandomMaze(numOfRows: 10, numOfCols: 10, seeded: true)
-            makeHoles(n: 3)
+            makeRandomMaze(numOfRows: 10, numOfCols: 7, seeded: true)
         }
         else if levelNumber == 2 {
-            makeRandomMaze(numOfRows: 3, numOfCols: 3, seeded: true)
-            makeHoles(n: 3)
+            makeRandomMaze(numOfRows: 12, numOfCols: 8, seeded: true)
         }
         else if levelNumber == 3 {
-            makeRandomMaze(numOfRows: 3, numOfCols: 3, seeded: true)
-            makeHoles(n: 3)
+            makeRandomMaze(numOfRows: 14, numOfCols: 9, seeded: true)
+            makeHoles(n: 10)
             
         }
         else if levelNumber == 4 {
-            makeRandomMaze(numOfRows: 3, numOfCols: 3, seeded: true)
-            makeHoles(n: 3)
+            makeRandomMaze(numOfRows: 16, numOfCols: 10, seeded: true)
+            makeHoles(n: 11)
             
         }
         else if levelNumber == 5 {
-            makeRandomMaze(numOfRows: 3, numOfCols: 3, seeded: true)
-            makeHoles(n: 3)
+            makeRandomMaze(numOfRows: 18, numOfCols: 11, seeded: true)
+            makeHoles(n: 12)
             
         }
         else if levelNumber == 6 {
+            //TODO: also randomize row, cols, holes
             let numOfRows = 20
             let numOfCols = 12
             let numOfHoles = 25
@@ -252,6 +251,11 @@ class STBallView: UIView {
     
     private func makeRandomMaze(numOfRows: Int, numOfCols: Int, seeded: Bool) {
 
+        var randomSource = GKMersenneTwisterRandomSource.init()
+        if seeded {
+            randomSource = GKMersenneTwisterRandomSource.init(seed: 54748356234563257)
+        }
+        
         var cells : [[Int]] = []
         for row in 0..<numOfRows {
             cells.append([Int]())
@@ -260,8 +264,8 @@ class STBallView: UIView {
             }
         }
         
-        carvePassage(seeded: seeded, cx: 0, cy: 0, cells: &cells)
-        
+        carvePassage(randomSource: randomSource, cx: 0, cy: 0, cells: &cells)
+
         let cellWidth = Int(self.bounds.width)/numOfCols
         let cellHeight = Int(self.bounds.height)/numOfRows
         for col in 0..<numOfRows {
@@ -279,7 +283,7 @@ class STBallView: UIView {
         
     }
     
-    private func carvePassage(seeded: Bool, cx: Int, cy: Int, cells: inout [[Int]]) {
+    private func carvePassage(randomSource: GKMersenneTwisterRandomSource, cx: Int, cy: Int, cells: inout [[Int]]) {
         
         let N : Int = 1
         let S : Int = 2
@@ -291,13 +295,7 @@ class STBallView: UIView {
         
         var shuffledDirections : [Int] = []
         
-        if seeded {
-            let randomSource = GKMersenneTwisterRandomSource.init(seed: 54748356234563257)
-            shuffledDirections = randomSource.arrayByShufflingObjects(in: [N, S, E, W]) as! [Int]
-        }
-        else {
-            shuffledDirections = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: [N, S, E, W]) as! [Int]
-        }
+        shuffledDirections = randomSource.arrayByShufflingObjects(in: [N, S, E, W]) as! [Int]
         
         for direction in shuffledDirections {
             let nx = cx + dx[direction]!
@@ -306,7 +304,7 @@ class STBallView: UIView {
                 if (cells[ny][nx] == 0) {
                     cells[cy][cx] |= direction
                     cells[ny][nx] |= opposite[direction]!
-                    carvePassage(seeded: seeded, cx: nx, cy: ny, cells: &cells)
+                    carvePassage(randomSource: randomSource, cx: nx, cy: ny, cells: &cells)
                 }
                 
             }
