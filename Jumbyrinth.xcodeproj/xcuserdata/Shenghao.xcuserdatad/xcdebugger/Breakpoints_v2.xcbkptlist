@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Jumbyrinth/PopUpViewController.swift"
-            timestampString = "534042222.460682"
+            timestampString = "534287320.395748"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "PopUpViewController"
             landmarkType = "3">
          </BreakpointContent>
