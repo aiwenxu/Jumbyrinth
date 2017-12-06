@@ -77,7 +77,7 @@ class ViewController: UIViewController {
         self.playground.addSubview(ballView!)
         self.sun.addSubview(sunView!)
         
-        manager.deviceMotionUpdateInterval = 1 / 24
+        manager.deviceMotionUpdateInterval = 0.005
         
         manager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
             
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                
                 
-                self.ballView!.updateLocation(multiplier: 1000)
+                self.ballView!.updateLocation(multiplier: 3000)
                 
                 if ((self.ballView!.currentPoint.x < self.ballView!.bounds.maxX)&&(self.ballView!.currentPoint.x > self.ballView!.bounds.maxX - 20)&&(self.ballView!.currentPoint.y < self.ballView!.bounds.maxY)&&(self.ballView!.currentPoint.y > self.ballView!.bounds.maxY - 20)) {
                         self.manager.stopDeviceMotionUpdates()
