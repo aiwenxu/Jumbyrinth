@@ -224,7 +224,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="hWG-0x-Jv1" kind="presentation" modalTransitionStyle="crossDissolve" id="9iu-nx-ehZ"/>
+                                    <segue destination="hWG-0x-Jv1" kind="presentation" modalTransitionStyle="flipHorizontal" id="9iu-nx-ehZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxW-nY-qME">
@@ -265,7 +265,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level1" id="PFc-g8-o3a"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level1" modalTransitionStyle="crossDissolve" id="PFc-g8-o3a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wsj-5t-MiM">
@@ -275,7 +275,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level2" id="Wu5-TS-cfR"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level2" modalTransitionStyle="crossDissolve" id="Wu5-TS-cfR"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHu-t7-74O">
@@ -285,7 +285,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level3" id="XOq-uZ-57a"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level3" modalTransitionStyle="crossDissolve" id="XOq-uZ-57a"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bbY-Cs-C0M">
@@ -295,7 +295,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level4" id="LY5-RM-z7L"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level4" modalTransitionStyle="crossDissolve" id="LY5-RM-z7L"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMp-Pe-kJn">
@@ -305,7 +305,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level5" id="MdM-cT-S7k"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="level5" modalTransitionStyle="crossDissolve" id="MdM-cT-S7k"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7zh-f0-e3J">
@@ -315,7 +315,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="surprise" id="oJW-lN-gpw"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="surprise" modalTransitionStyle="crossDissolve" id="oJW-lN-gpw"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydI-Mx-atr">
@@ -443,6 +443,6 @@
         <image name="direction" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MdM-cT-S7k"/>
+        <segue reference="Wu5-TS-cfR"/>
     </inferredMetricsTieBreakers>
 </document>

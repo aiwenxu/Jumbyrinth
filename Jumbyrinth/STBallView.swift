@@ -166,6 +166,7 @@ class STBallView: UIView {
     
     private func makeMaze(levelNumber: Int) {
         
+        //draw bounds
         drawVLine(x: 0, y: 0, length: Int(self.bounds.height))
         drawVLine(x: Int(self.bounds.width - 1), y: 0, length: Int(self.bounds.height))
         drawHLine(x: 30, y: 0, length: Int(self.bounds.width - 30))
@@ -200,56 +201,47 @@ class STBallView: UIView {
             makeRandomMaze(numOfRows: numOfRows, numOfCols: numOfCols, seeded: false)
             makeRandomHoles(n: numOfHoles, seeded: -1)
         }
-
-        
-//        makeRandomMaze(numOfRows: 20, numOfCols: 12)
-        
-//        makeHoles(n: 25)
-//        mazeLevel1();
     }
     
-    
-    //TODO: draw more mazes using the following format
-    
-    private func mazeLevel1() {
-        drawHLine(x: 90, y: 60, length: 100)
-        drawVLine(x: 90, y: 60, length: 110)
-        drawVLine(x: 120, y: 60, length: 140)
-        drawHLine(x: 0, y: 200, length: 120)
-        drawVLine(x: 30, y: 0, length: 110)
-        drawHLine(x: 30, y: 110, length: 30)
-        drawHLine(x: 0, y: 140, length: 60)
-        drawHLine(x: 30, y: 170, length: 60)
-        drawVLine(x: 190, y: 60, length: 260)
-        drawVLine(x: 60, y: 0, length: 80)
-        drawHLine(x: 60, y: 30, length: 160)
-        drawVLine(x: 220, y: 30, length: 90)
-        drawHLine(x: 190, y: 150, length: 80)
-        drawVLine(x: 245, y: 0, length: 50)
-        drawVLine(x: 245, y: 80, length: 70)
-        drawVLine(x: 270, y: 30, length: 120)
-        drawHLine(x: 190, y: 320, length: 80)
-        drawHLine(x: 220, y: 180, length: 81)
-        drawVLine(x: 220, y: 180, length: 110)
-        drawVLine(x: 245, y: 210, length: 110)
-        drawVLine(x: 270, y: 180, length: 40)
-        drawVLine(x: 270, y: 245, length: 105)
-        drawHLine(x: 30, y: 350, length: 240)
-        drawHLine(x: 30, y: 375, length: 270)
-        drawVLine(x: 30, y: 230, length: 120)
-        drawHLine(x: 30, y: 230, length: 120)
-        drawVLine(x: 150, y: 170, length: 150)
-        drawHLine(x: 60, y: 320, length: 90)
-        drawVLine(x: 60, y: 260, length: 60)
-        drawHLine(x: 60, y: 260, length: 60)
-        drawVLine(x: 120, y: 260, length: 30)
-        drawHLine(x: 90, y: 290, length: 30)
-        drawVLine(x: 150, y: 60, length: 80)
-        drawHLine(x: 150, y: 280, length: 20)
-        drawHLine(x: 170, y: 225, length: 20)
-        drawHLine(x: 150, y: 170, length: 20)
-        drawHLine(x: 150, y: 110, length: 20)
-    }
+//    private func mazeLevel1() {
+//        drawHLine(x: 90, y: 60, length: 100)
+//        drawVLine(x: 90, y: 60, length: 110)
+//        drawVLine(x: 120, y: 60, length: 140)
+//        drawHLine(x: 0, y: 200, length: 120)
+//        drawVLine(x: 30, y: 0, length: 110)
+//        drawHLine(x: 30, y: 110, length: 30)
+//        drawHLine(x: 0, y: 140, length: 60)
+//        drawHLine(x: 30, y: 170, length: 60)
+//        drawVLine(x: 190, y: 60, length: 260)
+//        drawVLine(x: 60, y: 0, length: 80)
+//        drawHLine(x: 60, y: 30, length: 160)
+//        drawVLine(x: 220, y: 30, length: 90)
+//        drawHLine(x: 190, y: 150, length: 80)
+//        drawVLine(x: 245, y: 0, length: 50)
+//        drawVLine(x: 245, y: 80, length: 70)
+//        drawVLine(x: 270, y: 30, length: 120)
+//        drawHLine(x: 190, y: 320, length: 80)
+//        drawHLine(x: 220, y: 180, length: 81)
+//        drawVLine(x: 220, y: 180, length: 110)
+//        drawVLine(x: 245, y: 210, length: 110)
+//        drawVLine(x: 270, y: 180, length: 40)
+//        drawVLine(x: 270, y: 245, length: 105)
+//        drawHLine(x: 30, y: 350, length: 240)
+//        drawHLine(x: 30, y: 375, length: 270)
+//        drawVLine(x: 30, y: 230, length: 120)
+//        drawHLine(x: 30, y: 230, length: 120)
+//        drawVLine(x: 150, y: 170, length: 150)
+//        drawHLine(x: 60, y: 320, length: 90)
+//        drawVLine(x: 60, y: 260, length: 60)
+//        drawHLine(x: 60, y: 260, length: 60)
+//        drawVLine(x: 120, y: 260, length: 30)
+//        drawHLine(x: 90, y: 290, length: 30)
+//        drawVLine(x: 150, y: 60, length: 80)
+//        drawHLine(x: 150, y: 280, length: 20)
+//        drawHLine(x: 170, y: 225, length: 20)
+//        drawHLine(x: 150, y: 170, length: 20)
+//        drawHLine(x: 150, y: 110, length: 20)
+//    }
     
     private func makeRandomMaze(numOfRows: Int, numOfCols: Int, seeded: Bool) {
 

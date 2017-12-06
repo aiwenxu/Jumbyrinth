@@ -83,18 +83,18 @@ class ViewController: UIViewController {
                 self.ballView!.updateLocation(multiplier: 1000)
                 
                 if ((self.ballView!.currentPoint.x < self.ballView!.bounds.maxX)&&(self.ballView!.currentPoint.x > self.ballView!.bounds.maxX - 20)&&(self.ballView!.currentPoint.y < self.ballView!.bounds.maxY)&&(self.ballView!.currentPoint.y > self.ballView!.bounds.maxY - 20)) {
-                self.manager.stopDeviceMotionUpdates()
-                    self.timer.invalidate()
+                        self.manager.stopDeviceMotionUpdates()
+                        self.timer.invalidate()
                     
-                    let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreDisplay") as! PopUpViewController
+                        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreDisplay") as! PopUpViewController
 
-                    self.view.alpha = 0.3
-                    vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
-                    vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                    self.present(vc, animated: true, completion: nil)
-                
-                    vc.time.text = self.timeDisplay.text!
-                    self.ballView?.pause = true
+                        self.view.alpha = 0.3
+                        vc.modalPresentationStyle = UIModalPresentationStyle.overCurrentContext
+                        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+                        self.present(vc, animated: true, completion: nil)
+                    
+                        vc.time.text = self.timeDisplay.text!
+                        self.ballView?.pause = true
                 }
             }
         }
