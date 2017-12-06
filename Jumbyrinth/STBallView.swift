@@ -111,11 +111,13 @@ class STBallView: UIView {
             
             var inholenow = false
             
-            for i in 0...(holes.count - 1) {
-                if (distance(holes[i], currentPoint) < 8) {
-                    inholenow = true
-                    holeNum = i
-                    break
+            if (holes.count > 1) {
+                for i in 0...(holes.count - 1) {
+                    if (distance(holes[i], currentPoint) < 8) {
+                        inholenow = true
+                        holeNum = i
+                        break
+                    }
                 }
             }
             
@@ -177,26 +179,26 @@ class STBallView: UIView {
         }
         else if levelNumber == 3 {
             makeRandomMaze(numOfRows: 14, numOfCols: 9, seeded: true)
-            makeHoles(n: 10)
+            makeRandomHoles(n: 8, seeded: 103321315)
             
         }
         else if levelNumber == 4 {
             makeRandomMaze(numOfRows: 16, numOfCols: 10, seeded: true)
-            makeHoles(n: 11)
+            makeRandomHoles(n: 16, seeded: 7492948532)
             
         }
         else if levelNumber == 5 {
             makeRandomMaze(numOfRows: 18, numOfCols: 11, seeded: true)
-            makeHoles(n: 12)
+            makeRandomHoles(n: 32, seeded: 213849321)
             
         }
         else if levelNumber == 6 {
             //TODO: also randomize row, cols, holes
             let numOfRows = 20
             let numOfCols = 12
-            let numOfHoles = 25
+            let numOfHoles = 32
             makeRandomMaze(numOfRows: numOfRows, numOfCols: numOfCols, seeded: false)
-            makeHoles(n: numOfHoles)
+            makeRandomHoles(n: numOfHoles, seeded: -1)
         }
 
         
@@ -317,13 +319,24 @@ class STBallView: UIView {
         return CGFloat(sqrt((xDist * xDist) + (yDist * yDist)))
     }
     
-    func makeHoles(n : Int) {
+    func makeRandomHoles(n : Int, seeded : Int) {
+        
+        var randomSource = GKMersenneTwisterRandomSource.init()
+        if (seeded != -1) {
+            randomSource = GKMersenneTwisterRandomSource.init(seed: UInt64(seeded))
+        }
+        
+        let randomDistribution = GKRandomDistribution.init(randomSource: randomSource, lowestValue: 0, highestValue: 1000)
+        
         for _ in 1...n {
             var x : Int
             var y : Int
             repeat {
-                x = Int(arc4random_uniform(UInt32(bounds.width - imageWidth))) + Int(imageWidth / 2)
-                y = Int(arc4random_uniform(UInt32(bounds.height - imageHeight))) + Int(imageHeight / 2)
+                
+                x = Int((CGFloat(randomDistribution.nextInt()) / CGFloat(1000)) * CGFloat(bounds.width - imageWidth)) + Int(imageWidth / 2)
+                
+                y = Int((CGFloat(randomDistribution.nextInt()) / CGFloat(1000)) * CGFloat(bounds.height - imageHeight)) + Int(imageHeight / 2)
+                
             } while !isValidHole(x: x, y: y)
             makeHole(x: x, y: y)
         }
