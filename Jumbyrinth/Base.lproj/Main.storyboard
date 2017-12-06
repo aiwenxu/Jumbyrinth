@@ -255,12 +255,12 @@
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="nf4-hK-ihs" customClass="LeaderboardPageViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adV-k3-Ngk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-372" y="1578"/>
+            <point key="canvasLocation" x="-373" y="1702"/>
         </scene>
-        <!--View Controller-->
+        <!--Leaderboard View Controller-->
         <scene sceneID="ebt-qb-aVp">
             <objects>
-                <viewController storyboardIdentifier="level1" id="CPn-b4-bl1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="level1" id="CPn-b4-bl1" customClass="LeaderboardViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Drw-5J-3Aa"/>
                         <viewControllerLayoutGuide type="bottom" id="kSc-fF-DHp"/>
@@ -268,48 +268,25 @@
                     <view key="view" contentMode="scaleToFill" id="CCV-Np-Nyg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXV-DE-WgX">
+                                <rect key="frame" x="40" y="49" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPressed:" destination="CPn-b4-bl1" eventType="touchUpInside" id="Ts4-R6-QON"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.70273524519999997" green="0.48732382060000001" blue="0.33682644369999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbq-dp-2dA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-372" y="2319"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="wSh-pQ-M8W">
-            <objects>
-                <viewController storyboardIdentifier="level2" id="mmj-Eb-cio" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vbS-NV-kNO"/>
-                        <viewControllerLayoutGuide type="bottom" id="cz0-MK-F4d"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Lre-cg-Q7R">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.23791706560000001" green="0.26880675549999999" blue="0.36009305720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f4p-dG-zuy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="441" y="2319"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="ADf-GM-6Rr">
-            <objects>
-                <viewController storyboardIdentifier="level3" id="tQN-0F-ebr" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="t6x-Am-JtT"/>
-                        <viewControllerLayoutGuide type="bottom" id="SKK-qC-YXV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="PCl-36-Pfl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.60175728799999995" green="0.66988676790000001" blue="0.72414737939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7ja-7u-zhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1257" y="2319"/>
+            <point key="canvasLocation" x="-372" y="2381"/>
         </scene>
         <!--Level View Controller-->
         <scene sceneID="ieN-Xf-rL7">
@@ -502,6 +479,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVP-jO-Yrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="440.80000000000001" y="805.54722638680664"/>
+        </scene>
+        <!--Leaderboard View Controller-->
+        <scene sceneID="KMy-DS-7J7">
+            <objects>
+                <viewController storyboardIdentifier="level3" id="Sb1-w8-mYX" customClass="LeaderboardViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9oZ-uf-mXM"/>
+                        <viewControllerLayoutGuide type="bottom" id="VGW-FZ-NzH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dKD-Fk-pMf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRl-LS-LhE">
+                                <rect key="frame" x="40" y="49" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPressed:" destination="Sb1-w8-mYX" eventType="touchUpInside" id="JN2-ij-owX"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="hahahaha" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3pP-1j-RTP">
+                                <rect key="frame" x="139" y="273" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.23791706560000001" green="0.26880675549999999" blue="0.36009305720000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8mu-Rf-8xQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1257" y="2381"/>
+        </scene>
+        <!--Leaderboard View Controller-->
+        <scene sceneID="zqF-oN-gZh">
+            <objects>
+                <viewController storyboardIdentifier="level2" id="Kt2-D6-J8c" customClass="LeaderboardViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8cE-zK-4yM"/>
+                        <viewControllerLayoutGuide type="bottom" id="fWd-px-YTy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="COE-XA-7qY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Oc-BI-77U">
+                                <rect key="frame" x="40" y="49" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPressed:" destination="Kt2-D6-J8c" eventType="touchUpInside" id="4Rr-Cc-Dzs"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="hahahaha" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76P-PP-8lY">
+                                <rect key="frame" x="139" y="273" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.60175728799999995" green="0.66988676790000001" blue="0.72414737939999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="baX-NW-Bo5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="441" y="2381"/>
         </scene>
     </scenes>
     <resources>

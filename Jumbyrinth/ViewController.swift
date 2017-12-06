@@ -86,6 +86,14 @@ class ViewController: UIViewController {
                         self.manager.stopDeviceMotionUpdates()
                         self.timer.invalidate()
                     
+                        let score = self.timeDisplay.text!
+                        let currentDateTime = Date()
+                        print(score)
+                        print(currentDateTime)
+                    
+                        let newScore = ScoreRecord(score: score, date: currentDateTime)
+                        self.saveScore(newScore: newScore)
+                    
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreDisplay") as! PopUpViewController
 
                         self.view.alpha = 0.3
@@ -116,5 +124,39 @@ class ViewController: UIViewController {
         let ms = Int(time) % 100
         return String(format: "%02d:%02d:%02d", m, s, ms)
     }
+    
+    private func saveScore(newScore: ScoreRecord) {
+        var scores = loadSavedScores()
+        if (scores != nil) {
+            scores?.append(newScore)
+        }
+        else {
+            scores = [ScoreRecord]()
+            scores?.append(newScore)
+        }
+        scores?.sort(by: { $0.score < $1.score })
+        //save the new scores
+//        for record in scores! {
+//            print(record.score)
+//            print(record.date)
+//        }
+//        print(scores!)
+        saveScoreArray(scores: scores!)
+    }
+    
+    private func loadSavedScores() -> [ScoreRecord]? {
+        return NSKeyedUnarchiver.unarchiveObject(withFile: ScoreRecord.ArchiveURLArray[levelNumber - 1].path) as? [ScoreRecord]
+    }
+    
+    private func saveScoreArray(scores: [ScoreRecord]) {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(scores, toFile: ScoreRecord.ArchiveURLArray[levelNumber - 1].path)
+        if isSuccessfulSave {
+            print("save successful")
+        }
+        else {
+            print("save fails")
+        }
+    }
+    
     
 }

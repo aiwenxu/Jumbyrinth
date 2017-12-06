@@ -29,6 +29,7 @@ class PopUpViewController: UIViewController {
         self.presentingViewController!.presentingViewController?.dismiss(animated: false, completion: nil)
 
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
