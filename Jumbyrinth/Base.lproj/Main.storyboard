@@ -235,7 +235,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="nf4-hK-ihs" kind="presentation" id="Kdn-Ef-6Hr"/>
+                                    <segue destination="nf4-hK-ihs" kind="presentation" modalTransitionStyle="flipHorizontal" id="Kdn-Ef-6Hr"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -252,7 +252,7 @@
         <!--Leaderboard Page View Controller-->
         <scene sceneID="8P6-nd-Pbw">
             <objects>
-                <pageViewController storyboardIdentifier="leaderboard" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="nf4-hK-ihs" customClass="LeaderboardPageViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="leaderboard" autoresizesArchivedViewToFullSize="NO" modalTransitionStyle="flipHorizontal" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="nf4-hK-ihs" customClass="LeaderboardPageViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="adV-k3-Ngk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-373" y="1702"/>
