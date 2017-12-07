@@ -12,7 +12,6 @@ class PopUpViewController: UIViewController {
 
     @IBOutlet weak var time: UILabel!
     
-    //TODO: print finish time in PopUpViewController
     
     @IBAction func again(_ sender: Any) {
         

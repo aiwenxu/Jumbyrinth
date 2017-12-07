@@ -18,9 +18,6 @@ class MainViewController: UIViewController {
         
         self.colorview.runTimer()
         self.colorview.runUpdateTimer()
-        
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

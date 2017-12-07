@@ -1,9 +1,16 @@
+//
+//  BallView.swift
+//  Jumbyrinth
+//
+//  Created by Shenghao Lin on 2017/11/16.
+//  Copyright © 2017年 nyu.edu. All rights reserved.
+//
 
 import UIKit
 import CoreMotion
 import GameplayKit
 
-class STBallView: UIView {
+class BallView: UIView {
     
     var levelNumber : Int = 0
 

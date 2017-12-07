@@ -1,3 +1,11 @@
+//
+//  ViewController.swift
+//  Jumbyrinth
+//
+//  Created by Shenghao Lin on 2017/11/16.
+//  Copyright © 2017年 nyu.edu. All rights reserved.
+//
+
 import UIKit
 import CoreMotion
 
@@ -9,7 +17,7 @@ class ViewController: UIViewController {
     
     var set = false
     
-    var ballView : STBallView?
+    var ballView : BallView?
     var sunView : SunMoonView?
 
     @IBOutlet weak var timeDisplay: UILabel!
@@ -38,7 +46,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         if (!set) {
-            ballView = STBallView.init(frame: playground.bounds, levelNumber: levelNumber)
+            ballView = BallView.init(frame: playground.bounds, levelNumber: levelNumber)
             sunView = SunMoonView.init(frame: sun.bounds)
             set = true
         }
@@ -69,7 +77,7 @@ class ViewController: UIViewController {
         self.playground.addSubview(ballView!)
         self.sun.addSubview(sunView!)
         
-        manager.deviceMotionUpdateInterval = 1 / 24
+        manager.deviceMotionUpdateInterval = 0.005
         
         manager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
             
@@ -80,7 +88,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                
                 
-                self.ballView!.updateLocation(multiplier: 1000)
+                self.ballView!.updateLocation(multiplier: 3000)
                 
                 if ((self.ballView!.currentPoint.x < self.ballView!.bounds.maxX)&&(self.ballView!.currentPoint.x > self.ballView!.bounds.maxX - 20)&&(self.ballView!.currentPoint.y < self.ballView!.bounds.maxY)&&(self.ballView!.currentPoint.y > self.ballView!.bounds.maxY - 20)) {
                         self.manager.stopDeviceMotionUpdates()
