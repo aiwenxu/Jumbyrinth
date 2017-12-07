@@ -16,7 +16,9 @@ class LeaderboardPageViewController: UIPageViewController, UIPageViewControllerD
     lazy var orderedViewControllers: [UIViewController] = {
         return [self.newVc(viewController: "level1"),
                 self.newVc(viewController: "level2"),
-                self.newVc(viewController: "level3")]
+                self.newVc(viewController: "level3"),
+                self.newVc(viewController: "level4"),
+                self.newVc(viewController: "level5")]
     }()
     
     override func viewDidLoad() {
@@ -47,8 +49,8 @@ class LeaderboardPageViewController: UIPageViewController, UIPageViewControllerD
         self.view.addSubview(pageControl)
     }
     
-    func newVc(viewController: String) -> LeaderboardViewController {
-        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewController) as! LeaderboardViewController
+    func newVc(viewController: String) -> LeaderboardTableViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: viewController) as! LeaderboardTableViewController
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
