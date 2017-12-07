@@ -26,7 +26,8 @@ class ScoreRecord: NSObject, NSCoding {
                                   DocumentsDirectory.appendingPathComponent("level2"),
                                   DocumentsDirectory.appendingPathComponent("level3"),
                                   DocumentsDirectory.appendingPathComponent("level4"),
-                                  DocumentsDirectory.appendingPathComponent("level5")]
+                                  DocumentsDirectory.appendingPathComponent("level5"),
+                                  DocumentsDirectory.appendingPathComponent("surprise")]
     
     //MARK: Types
     struct PropertyKeys {

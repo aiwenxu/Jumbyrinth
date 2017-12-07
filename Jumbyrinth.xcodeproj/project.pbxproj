@@ -12,8 +12,6 @@
 		7A2E27A01FD64E4B0079D512 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2E279F1FD64E4B0079D512 /* MainViewController.swift */; };
 		7A4980CC1FCF194600939CD8 /* PauseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A4980CB1FCF194600939CD8 /* PauseViewController.swift */; };
 		7A601CCC1FC51296004686AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601CCB1FC51296004686AD /* AppDelegate.swift */; };
-		7A601CD21FC51296004686AD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601CD11FC51296004686AD /* GameScene.swift */; };
-		7A601CD41FC51296004686AD /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601CD31FC51296004686AD /* GameViewController.swift */; };
 		7A601CD71FC51296004686AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A601CD51FC51296004686AD /* Main.storyboard */; };
 		7A601CD91FC51296004686AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A601CD81FC51296004686AD /* Assets.xcassets */; };
 		7A601CDC1FC51296004686AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A601CDA1FC51296004686AD /* LaunchScreen.storyboard */; };
@@ -53,8 +51,6 @@
 		7A4980CB1FCF194600939CD8 /* PauseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseViewController.swift; sourceTree = "<group>"; };
 		7A601CC81FC51296004686AD /* Jumbyrinth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jumbyrinth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A601CCB1FC51296004686AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7A601CD11FC51296004686AD /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
-		7A601CD31FC51296004686AD /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		7A601CD61FC51296004686AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7A601CD81FC51296004686AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A601CDB1FC51296004686AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -124,8 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				7A601CCB1FC51296004686AD /* AppDelegate.swift */,
-				7A601CD11FC51296004686AD /* GameScene.swift */,
-				7A601CD31FC51296004686AD /* GameViewController.swift */,
 				7A601CD51FC51296004686AD /* Main.storyboard */,
 				A05359271FD8E31600C231E9 /* LeaderboardTableViewController.swift */,
 				A05359251FD8E1BC00C231E9 /* ScoreTableViewCell.swift */,
@@ -301,9 +295,7 @@
 				7A2E279E1FD6490C0079D512 /* ColorfulView.swift in Sources */,
 				A06D69321FD8675700E54F79 /* ScoreRecord.swift in Sources */,
 				7A2E27A01FD64E4B0079D512 /* MainViewController.swift in Sources */,
-				7A601CD21FC51296004686AD /* GameScene.swift in Sources */,
 				7A4980CC1FCF194600939CD8 /* PauseViewController.swift in Sources */,
-				7A601CD41FC51296004686AD /* GameViewController.swift in Sources */,
 				A08BDDB01FD59C0E009346CB /* LevelViewController.swift in Sources */,
 				7A0871FF1FCE07020007DA29 /* SunMoonView.swift in Sources */,
 				7AC16C2D1FCD265E0042C624 /* PopUpViewController.swift in Sources */,

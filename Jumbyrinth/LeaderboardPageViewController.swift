@@ -18,7 +18,8 @@ class LeaderboardPageViewController: UIPageViewController, UIPageViewControllerD
                 self.newVc(viewController: "level2"),
                 self.newVc(viewController: "level3"),
                 self.newVc(viewController: "level4"),
-                self.newVc(viewController: "level5")]
+                self.newVc(viewController: "level5"),
+                self.newVc(viewController: "level6")]
     }()
     
     override func viewDidLoad() {

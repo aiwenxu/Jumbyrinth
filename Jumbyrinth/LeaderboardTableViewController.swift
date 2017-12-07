@@ -15,6 +15,7 @@ class LeaderboardTableViewController: UITableViewController {
     @IBAction func backPressed(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
     //read the storyboard id
     var levelNumber = 0
     
@@ -33,10 +34,20 @@ class LeaderboardTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         
+        self.tableView.backgroundView = ColorfulView()
+        (self.tableView.backgroundView as! ColorfulView).updateTimer()
+        (self.tableView.backgroundView as! ColorfulView).runUpdateTimer()
+        
+        self.tableView.separatorColor = UIColor.clear
+        
         initializeLevelNumber()
         records = loadSavedScores()
-        
-        levelboardTitle.text = String.init(format: "Level %d Leaderboard", levelNumber)
+        if (levelNumber < 6){
+            levelboardTitle.text = String.init(format: "Level %d", levelNumber)
+        }
+        else {
+            levelboardTitle.text = String("Level X")
+        }
         
         if records != nil {
             noScoreLabel.textColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.0)
@@ -97,6 +108,8 @@ class LeaderboardTableViewController: UITableViewController {
         
         cell.scoreLabel.text = record.score
         cell.dateLabel.text = dateFormatter.string(for: record.date)
+        cell.backgroundColor = UIColor.clear
+        
         
         return cell
         
