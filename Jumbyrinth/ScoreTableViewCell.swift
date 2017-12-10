@@ -8,9 +8,12 @@
 
 import UIKit
 
+// A table view cell used in the leaderboard.
 class ScoreTableViewCell: UITableViewCell {
 
+    // A label that displays the score (the amount of the time used to complete the game).
     @IBOutlet weak var scoreLabel: UILabel!
+    // A label that displays the date on which the score record is created.
     @IBOutlet weak var dateLabel: UILabel!
     
     override func awakeFromNib() {
