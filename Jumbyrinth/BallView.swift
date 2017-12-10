@@ -186,7 +186,7 @@ class BallView: UIView {
             makeRandomMaze(numOfRows: 12, numOfCols: 8, seeded: true)
         }
         else if levelNumber == 3 {
-            makeRandomMaze(numOfRows: 14, numOfCols: 9, seeded: true)
+            makeRandomMaze(numOfRows: 15, numOfCols: 9, seeded: true)
             makeRandomHoles(n: 8, seeded: 103321315)
             
         }

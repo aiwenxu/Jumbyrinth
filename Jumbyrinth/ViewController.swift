@@ -143,6 +143,9 @@ class ViewController: UIViewController {
             scores?.append(newScore)
         }
         scores?.sort(by: { $0.score < $1.score })
+        if scores!.count > 10 {
+            scores = Array(scores![0...9])
+        }
         //save the new scores
 //        for record in scores! {
 //            print(record.score)
