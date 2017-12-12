@@ -20,6 +20,7 @@
 		7A601D011FC5136C004686AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601CFF1FC5136C004686AD /* ViewController.swift */; };
 		7A601D021FC5136C004686AD /* BallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A601D001FC5136C004686AD /* BallView.swift */; };
 		7AC16C2D1FCD265E0042C624 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC16C2C1FCD265E0042C624 /* PopUpViewController.swift */; };
+		7ACF2E1B1FDF585600CB1E76 /* RuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACF2E1A1FDF585600CB1E76 /* RuleViewController.swift */; };
 		A05359261FD8E1BC00C231E9 /* ScoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05359251FD8E1BC00C231E9 /* ScoreTableViewCell.swift */; };
 		A05359281FD8E31600C231E9 /* LeaderboardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05359271FD8E31600C231E9 /* LeaderboardTableViewController.swift */; };
 		A0648DB51FD844EC0004BE1C /* LeaderboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0648DB41FD844EC0004BE1C /* LeaderboardPageViewController.swift */; };
@@ -64,6 +65,7 @@
 		7A601CFF1FC5136C004686AD /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7A601D001FC5136C004686AD /* BallView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BallView.swift; sourceTree = "<group>"; };
 		7AC16C2C1FCD265E0042C624 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		7ACF2E1A1FDF585600CB1E76 /* RuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleViewController.swift; sourceTree = "<group>"; };
 		A05359251FD8E1BC00C231E9 /* ScoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreTableViewCell.swift; sourceTree = "<group>"; };
 		A05359271FD8E31600C231E9 /* LeaderboardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTableViewController.swift; sourceTree = "<group>"; };
 		A0648DB41FD844EC0004BE1C /* LeaderboardPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPageViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 			children = (
 				7A601CCB1FC51296004686AD /* AppDelegate.swift */,
 				7A601CD51FC51296004686AD /* Main.storyboard */,
+				7ACF2E1A1FDF585600CB1E76 /* RuleViewController.swift */,
 				A05359271FD8E31600C231E9 /* LeaderboardTableViewController.swift */,
 				A05359251FD8E1BC00C231E9 /* ScoreTableViewCell.swift */,
 				A06D69311FD8675700E54F79 /* ScoreRecord.swift */,
@@ -296,6 +299,7 @@
 				A06D69321FD8675700E54F79 /* ScoreRecord.swift in Sources */,
 				7A2E27A01FD64E4B0079D512 /* MainViewController.swift in Sources */,
 				7A4980CC1FCF194600939CD8 /* PauseViewController.swift in Sources */,
+				7ACF2E1B1FDF585600CB1E76 /* RuleViewController.swift in Sources */,
 				A08BDDB01FD59C0E009346CB /* LevelViewController.swift in Sources */,
 				7A0871FF1FCE07020007DA29 /* SunMoonView.swift in Sources */,
 				7AC16C2D1FCD265E0042C624 /* PopUpViewController.swift in Sources */,

@@ -204,6 +204,50 @@
             </objects>
             <point key="canvasLocation" x="2042" y="808"/>
         </scene>
+        <!--Rule View Controller-->
+        <scene sceneID="AS7-0i-SWQ">
+            <objects>
+                <viewController id="nCv-jz-i3s" customClass="RuleViewController" customModule="Jumbyrinth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UUT-U0-a7q"/>
+                        <viewControllerLayoutGuide type="bottom" id="h4f-69-IY1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LQ5-7D-okz" customClass="ColorfulView" customModule="Jumbyrinth" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xl2-nR-VUV">
+                                <rect key="frame" x="25" y="60" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backPushed:" destination="nCv-jz-i3s" eventType="touchUpInside" id="0dr-zD-OaD"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" pagingEnabled="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei8-rV-0D7">
+                                <rect key="frame" x="38" y="98" width="299" height="494"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <mutableString key="text">Jumbyrinth is a maze game, but it is not the same as a traditional maze game. There are two notable additional features. The first feature is that there exist "wormholes" in the maze. If the ball is caught into one of the "wormholes", it will be randomly transported to the location of another "wormhole". The second feature is that the ball is allowed to jump. If you are stuck in a dead end, you can jump over the wall to get out. If you have a "wormhole" ahead that you wish to avoid, you can jump over the "wormhole" to get past it.
+
+To play, you can choose one of the six levels, which are "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" and "Surprise Me!". "Level 1", "Level 2", "Level 3", "Level 4" and "Level 5" are fixed levels. They are increasingly difficult. "Surprise Me!", as the name indicates, is a surprise. In this level the maze and the "wormholes" in it are randomly generated. Each time you play this level, you will have a different maze. The difficulty of this level is fixed, and it is more difficult than all the preceding levels. </mutableString>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="colorview" destination="LQ5-7D-okz" id="v7u-A4-9Yx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfc-1e-jCJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-375.19999999999999" y="42.728635682158924"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="2HU-Cm-NBn">
             <objects>
@@ -238,6 +282,17 @@
                                     <segue destination="nf4-hK-ihs" kind="presentation" modalTransitionStyle="flipHorizontal" id="Kdn-Ef-6Hr"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mdt-6M-W05">
+                                <rect key="frame" x="139" y="613" width="96" height="39"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
+                                <state key="normal" title="Rules">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="nCv-jz-i3s" kind="presentation" modalTransitionStyle="flipHorizontal" id="oxv-OO-RAC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.091512353373646604" green="0.76631454327412107" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -247,7 +302,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbI-Yz-cdi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-372" y="807"/>
+            <point key="canvasLocation" x="-372" y="806.44677661169419"/>
         </scene>
         <!--Leaderboard Page View Controller-->
         <scene sceneID="8P6-nd-Pbw">
