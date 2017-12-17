@@ -8,14 +8,21 @@
 
 import UIKit
 
+// The class designed for the main function view
 class MainViewController: UIViewController {
     
-    
+    // auto color changing
     @IBOutlet var colorview: ColorfulView!
     
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
+        //Since it is a game, should prevent screen lock
+        UIApplication.shared.isIdleTimerDisabled = true
+        
+        //auto color view starts
         self.colorview.runTimer()
         self.colorview.runUpdateTimer()
     }

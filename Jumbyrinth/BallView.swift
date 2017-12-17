@@ -10,6 +10,8 @@ import UIKit
 import CoreMotion
 import GameplayKit
 
+// The class designed to control the ball and related motion in the actual game scene
+// Also in charge of maze generation and drawing
 class BallView: UIView {
     
     var levelNumber : Int = 0
@@ -27,29 +29,35 @@ class BallView: UIView {
     
     var pause : Bool
 
-    var ballXVelocity : Double = 0
-    var ballYVelocity : Double = 0
+    var ballXV : Double = 0
+    var ballYV : Double = 0
+    var ballZV : Double = 0
     
-    var ballZVelovity : Double = 0
-    
+    //the 2D array of boolean variable used to represent the status of each pixel on the screen: wall or empty
     var bits = [[Bool]]()
 
     var z : Double = 0
 
+    // When a ball's position is updated, check if it touches any bounds in the playground
+    // If so, a bounce is triggered
     var currentPoint = CGPoint() {
         didSet{
             
+            //strict checks for outer bounds
             if currentPoint.x <=  imageWidth / 2 {
                 currentPoint.x = imageWidth / 2
-                ballXVelocity = -ballXVelocity * 0.5
+                ballXV = -ballXV * 0.5
             }
-            
             else if currentPoint.x >= bounds.size.width - imageWidth / 2 {
                 currentPoint.x = bounds.size.width - imageWidth / 2
-                ballXVelocity = -ballXVelocity * 0.5
+                ballXV = -ballXV * 0.5
             }
             
-            else if (self.z < 0.5) {
+            //when the ball's z parameter is less than 5, we consider its jump to be lower than the height of the wall
+            //It will decect the wall around itself and make corresponding jump
+                
+            //horizontal bounce
+            else if (self.z < 5) {
             
                 for i in 0...Int(imageWidth / 2) {
                     if (Int(currentPoint.x) + i >= Int(bounds.size.width)) {
@@ -61,32 +69,33 @@ class BallView: UIView {
                     
                     if self.bits[Int(currentPoint.y)][Int(currentPoint.x) + i] {
                         currentPoint.x = currentPoint.x - (imageWidth/2 - CGFloat(i))
-                        ballXVelocity = min(0, -ballXVelocity * 0.5)
+                        ballXV = min(0, -ballXV * 0.5)
                         break
                     }
                     
                     if self.bits[Int(currentPoint.y)][Int(currentPoint.x) - i] {
                         currentPoint.x = currentPoint.x + (imageWidth/2 - CGFloat(i))
-                        ballXVelocity = max(0, -ballXVelocity * 0.5)
+                        ballXV = max(0, -ballXV * 0.5)
                         break
                     }
                     
                 }
             }
             
+            //strict checks for outer bounds
             if (currentPoint.y <= imageHeight / 2) {
                 currentPoint.y = imageHeight / 2
-                ballYVelocity = -ballYVelocity * 0.5
+                ballYV = -ballYV * 0.5
 
             }
             
             else if (currentPoint.y >= bounds.size.height - imageHeight / 2) {
                 currentPoint.y = bounds.size.height - imageHeight / 2
-                ballYVelocity = -ballYVelocity * 0.5
+                ballYV = -ballYV * 0.5
             }
             
-            
-            else if (self.z < 0.5) {
+            //verticle bounce against inner walls
+            else if (self.z < 5) {
                 for i in 0...Int(imageHeight / 2) {
                     if (Int(currentPoint.y) + i >= Int(bounds.size.height)) {
                         break
@@ -98,24 +107,23 @@ class BallView: UIView {
             
                     if self.bits[Int(currentPoint.y) + i][Int(currentPoint.x)] {
                         currentPoint.y = currentPoint.y - (imageHeight/2 - CGFloat(i))
-                        ballYVelocity = max(0, -ballYVelocity * 0.5)
+                        ballYV = max(0, -ballYV * 0.5)
                         break
                     }
                     
                     if self.bits[Int(currentPoint.y) - i][Int(currentPoint.x)] {
                         currentPoint.y = currentPoint.y + (imageHeight/2 - CGFloat(i))
-                        ballYVelocity = min(0, -ballYVelocity * 0.5)
+                        ballYV = min(0, -ballYV * 0.5)
                         break
                     }
                     
                 }
             }
 
-            
             imageView.center = currentPoint
             
+            //hole transportation
             var holeNum = -1
-            
             var inholenow = false
             
             if (holes.count > 1) {
@@ -128,6 +136,7 @@ class BallView: UIView {
                 }
             }
             
+            //prevent inifinite transportation when in a hole
             if (inhole) {
                 if (!inholenow) {
                     inhole = false
@@ -149,6 +158,7 @@ class BallView: UIView {
         }
     }
     
+    // Make maze generation according to the level number and setup UI
     init(frame: CGRect, levelNumber: Int) {
         pause = false
         super.init(frame: frame)
@@ -158,27 +168,26 @@ class BallView: UIView {
                 ww.append(false)
             }
             self.bits.append(ww)
-            
         }
         
         makeMaze(levelNumber: levelNumber)
         setupUI()
     }
     
-    
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // Method to draw mazes
     private func makeMaze(levelNumber: Int) {
         
-        //draw bounds
+        //draw outer bounds
         drawVLine(x: 0, y: 0, length: Int(self.bounds.height))
         drawVLine(x: Int(self.bounds.width - 1), y: 0, length: Int(self.bounds.height))
         drawHLine(x: 30, y: 0, length: Int(self.bounds.width - 30))
         drawHLine(x: 0, y: Int(self.bounds.height - 1), length: Int(self.bounds.width - 30))
         
+        //fixed level 1-5
         if levelNumber == 1 {
             makeRandomMaze(numOfRows: 10, numOfCols: 7, seeded: true)
         }
@@ -188,18 +197,18 @@ class BallView: UIView {
         else if levelNumber == 3 {
             makeRandomMaze(numOfRows: 15, numOfCols: 9, seeded: true)
             makeRandomHoles(n: 8, seeded: 103321315)
-            
         }
         else if levelNumber == 4 {
             makeRandomMaze(numOfRows: 16, numOfCols: 10, seeded: true)
             makeRandomHoles(n: 16, seeded: 7492948532)
-            
         }
         else if levelNumber == 5 {
             makeRandomMaze(numOfRows: 18, numOfCols: 11, seeded: true)
             makeRandomHoles(n: 32, seeded: 213849321)
             
         }
+            
+        //level X
         else if levelNumber == 6 {
             //TODO: also randomize row, cols, holes
             let numOfRows = 20
@@ -209,7 +218,8 @@ class BallView: UIView {
             makeRandomHoles(n: numOfHoles, seeded: -1)
         }
     }
-    
+
+// Former Level 1 implementation
 //    private func mazeLevel1() {
 //        drawHLine(x: 90, y: 60, length: 100)
 //        drawVLine(x: 90, y: 60, length: 110)
@@ -312,12 +322,14 @@ class BallView: UIView {
         }
     }
     
+    // Function to calculate the distance between 2 CGPoint
     func distance(_ a: CGPoint, _ b: CGPoint) -> CGFloat {
         let xDist = a.x - b.x
         let yDist = a.y - b.y
         return CGFloat(sqrt((xDist * xDist) + (yDist * yDist)))
     }
     
+    // Method to make random holes of a given number
     func makeRandomHoles(n : Int, seeded : Int) {
         
         var randomSource = GKMersenneTwisterRandomSource.init()
@@ -330,17 +342,17 @@ class BallView: UIView {
         for _ in 1...n {
             var x : Int
             var y : Int
+            
+            //generate non-overlaping holes
             repeat {
-                
                 x = Int((CGFloat(randomDistribution.nextInt()) / CGFloat(1000)) * CGFloat(bounds.width - imageWidth)) + Int(imageWidth / 2)
-                
                 y = Int((CGFloat(randomDistribution.nextInt()) / CGFloat(1000)) * CGFloat(bounds.height - imageHeight)) + Int(imageHeight / 2)
-                
             } while !isValidHole(x: x, y: y)
             makeHole(x: x, y: y)
         }
     }
     
+    // Check if there is a hole overlaping
     func isValidHole(x : Int, y : Int) -> Bool {
         
         let this = CGPoint(x: CGFloat(x), y: CGFloat(y))
@@ -361,6 +373,7 @@ class BallView: UIView {
         return true
     }
 
+    // Method to make a single hole and add the hole's location to the hole list
     private func makeHole(x: Int, y: Int) {
         let hole = UIImageView.init(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
         hole.image = UIImage.init(named: "blackhole")
@@ -369,26 +382,35 @@ class BallView: UIView {
         self.holes.append(hole.center)
     }
     
+    // Method drawing horizontal line on the maze
+    // Also marking the pixels on the line to be true
     private func drawHLine(x : Int, y : Int, length : Int) {
         let line = UIView(frame: CGRect(x: x, y: max(y - 1, 0), width: length, height: 3))
         line.backgroundColor = UIColor.gray
         self.addSubview(line)
         for i in x...x+length {
+            
+            //wall mark
             self.bits[y][i] = true
         }
     }
     
+    // Method drawing verticle line on the maze
+    // Also marking the pixels on the line to be true
     private func drawVLine(x : Int, y : Int, length : Int) {
         let line = UIView(frame: CGRect(x: max(0, x - 1), y: y, width: 3, height: length))
         line.backgroundColor = UIColor.gray
         self.addSubview(line)
         for i in y...y+length {
+            
+            //wall mark
             self.bits[i][x] = true
         }
     }
     
+    // Method to draw the background
     private func setupUI() {
-        backgroundColor = UIColor.lightGray
+        
         imageView.image = UIImage.init(named: "ball")
         imageView.contentMode = UIViewContentMode.scaleToFill
         addSubview(imageView)
@@ -399,49 +421,65 @@ class BallView: UIView {
     
     func updateLocation(multiplier : Double) {
         if (lastUpdateTime != nil)&&(!pause) {
-            let updatePeriod : Double = Date.init().timeIntervalSince(lastUpdateTime!)
             
-            if (z == 0) {
-                ballXVelocity = ballXVelocity + accelleration.x * updatePeriod
-                ballYVelocity = ballYVelocity + accelleration.y * updatePeriod
+            let updatePeriod = Date.init().timeIntervalSince(lastUpdateTime!)
+            
+            //the accelleration is different on the floor and on the sky
+            //we do not apply the same rule to ballZV, as its trigger rule is different
+            if (self.z < 2) {
+                ballXV = ballXV + accelleration.x * updatePeriod
+                ballYV = ballYV + accelleration.y * updatePeriod
             }
             else {
-                ballXVelocity = ballXVelocity + accelleration.x * updatePeriod * 0.3
-                ballYVelocity = ballYVelocity + accelleration.y * updatePeriod * 0.3
+                ballXV = (ballXV + accelleration.x * updatePeriod * 0.6) * 0.8
+                ballYV = (ballYV + accelleration.y * updatePeriod * 0.6) * 0.8
             }
             
+            //Speed limit, making the game more reasonable
+            if (ballXV > 0.3) {ballXV = 0.3}
+            if (ballXV < -0.3) {ballXV = -0.3}
+            if (ballYV > 0.3) {ballYV = 0.3}
+            if (ballYV < -0.3) {ballYV = -0.3}
             
-            if (ballXVelocity > 0.3) {ballXVelocity = 0.3}
-            
-            if (ballXVelocity < -0.3) {ballXVelocity = -0.3}
-            
-            if (ballYVelocity > 0.3) {ballYVelocity = 0.3}
-            
-            if (ballYVelocity < -0.3) {ballYVelocity = -0.3}
-            
-            if (self.jump.z > 0.6) {
-                ballZVelovity = self.jump.z * multiplier / 400;
+            //Only a large enough accerleration on z-axis can trigger jump
+            //No jump on the sky
+            if ((self.jump.z > 0.6)&&(self.z == 0)) {
+                ballZV = self.jump.z * multiplier / 400;
             }
             
-            if ((z > 0)||(ballZVelovity > 0)) {
+            //The ball size changes when it is on the sky
+            //The acceleration and z-vocility changes during ball on the sky
+            if ((self.z > 0)||(ballZV > 0)) {
                 
                 imageView.frame.size.width = imageWidth * CGFloat(1 + z / 100)
                 imageView.frame.size.height = imageHeight * CGFloat(1 + z / 100)
-                z = z + ballZVelovity
-                ballZVelovity -= 0.7
+                
+                z = z + ballZV
+                ballZV -= 0.7
             }
             
+            //fall back to the ground
             if (z < 0) {
                 z = 0
-                ballZVelovity = 0;
+                
+                //z-axis bounce
+                if (ballZV < -1) {
+                    ballZV = -ballZV * 0.5
+                }
+                else {
+                    ballZV = 0;
+                }
+                
                 imageView.frame.size.width = imageWidth
                 imageView.frame.size.height = imageHeight
-                
             }
             
+            //update location of the ball in the maze
             let coefficient = updatePeriod * multiplier
-            currentPoint = CGPoint(x: currentPoint.x + (CGFloat)(ballXVelocity * coefficient), y: currentPoint.y - (CGFloat)(ballYVelocity * coefficient))
+            currentPoint = CGPoint(x: currentPoint.x + (CGFloat)(ballXV * coefficient), y: currentPoint.y - (CGFloat)(ballYV * coefficient))
         }
+        
+        //record the update
         lastUpdateTime = Date()
         pause = false
     }

@@ -8,11 +8,12 @@
 
 import UIKit
 
+// This class is designed for the result pop-up page.
 class PopUpViewController: UIViewController {
 
     @IBOutlet weak var time: UILabel!
     
-    
+    //Press again, return to the game screen and reset the game to the default status
     @IBAction func again(_ sender: Any) {
         
         dismiss(animated: false, completion: nil)
@@ -22,6 +23,7 @@ class PopUpViewController: UIViewController {
         vc.viewDidLoad()
     }
     
+    //Return to level selection, which is the grandparent of this screen
     @IBAction func dismiss(_ sender: Any) {
         
         dismiss(animated: false, completion: nil)

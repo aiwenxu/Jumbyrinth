@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 
+// The class designed for the actual game scene
 class ViewController: UIViewController {
     
     var levelNumber: Int = 0
@@ -26,13 +27,16 @@ class ViewController: UIViewController {
     @IBOutlet weak var levelLabel: UILabel!
     @IBOutlet var colorvie: ColorfulView!
     
+    //timer to record the result
     var seconds : Int = 0
     var timer = Timer()
     
     override func viewDidLoad() {
         
+        //Start to update background color
         colorvie.runUpdateTimer()
         
+        //Level label initialization
         if levelNumber == 6 {
             levelLabel.text = "Level X"
         }
@@ -45,7 +49,10 @@ class ViewController: UIViewController {
         
         super.viewDidLoad()
         
+        //Check if the the playground has already been initialized
+        //if not yet, initialize it, including ballview and sunview
         if (!set) {
+            
             ballView = BallView.init(frame: playground.bounds, levelNumber: levelNumber)
             sunView = SunMoonView.init(frame: sun.bounds)
             set = true
@@ -53,13 +60,15 @@ class ViewController: UIViewController {
         playBall()
     }
     
+    // when pause is pressed, pause the game (stop the timer and DeviceMotion update)
     @IBAction func pausePushed(_ sender: Any) {
         
         self.view.alpha = 0.5
         self.manager.stopDeviceMotionUpdates()
         self.timer.invalidate()
+        
+        //set the pause staus to be true
         self.ballView?.pause = true
-        print(self.ballView?.currentPoint as Any)
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,12 +76,14 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    public func bye() {
-        dismiss(animated: true, completion: nil)
-    }
-    
+    // Start the game
+    // Start to collect data from deviceMotion and start to update the ball location accordingly
     public func playBall() {
+        
+        //Start to record time
         runTimer()
+        
+        //maze and ball setup
         ballView!.backgroundColor = UIColor.clear
         self.playground.addSubview(ballView!)
         self.sun.addSubview(sunView!)
@@ -81,27 +92,33 @@ class ViewController: UIViewController {
         
         manager.startDeviceMotionUpdates(to: OperationQueue.main) { (motion, error) in
             
+            //Use gravity for x-y direct on the phone screeen for ball accerleration
+            //and the acceleration on y-axis on the phone screen for jump
             self.ballView!.accelleration = (motion?.gravity)!
-            
             self.ballView!.jump = (motion?.userAcceleration)!
     
+            //update data periodically
             DispatchQueue.main.async {
-               
                 
+                //update ball location
                 self.ballView!.updateLocation(multiplier: 3000)
                 
+                //check the ball location to see if the game is over
                 if ((self.ballView!.currentPoint.x < self.ballView!.bounds.maxX)&&(self.ballView!.currentPoint.x > self.ballView!.bounds.maxX - 20)&&(self.ballView!.currentPoint.y < self.ballView!.bounds.maxY)&&(self.ballView!.currentPoint.y > self.ballView!.bounds.maxY - 20)) {
+                    
+                        //when game is over, stop ball movement and time record
                         self.manager.stopDeviceMotionUpdates()
                         self.timer.invalidate()
                     
+                        //save score
                         let score = self.timeDisplay.text!
                         let currentDateTime = Date()
                         print(score)
                         print(currentDateTime)
-                    
                         let newScore = ScoreRecord(score: score, date: currentDateTime)
                         self.saveScore(newScore: newScore)
                     
+                        //pop up the result scene
                         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "scoreDisplay") as! PopUpViewController
 
                         self.view.alpha = 0.3
@@ -116,16 +133,18 @@ class ViewController: UIViewController {
         }
     }
     
+    // Timer setup
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: (#selector(ViewController.updateTimer)), userInfo: nil, repeats: true)
     }
     
-    
+    // Timer record update and display
     @objc func updateTimer() {
         seconds += 1
         timeDisplay.text = timeString(time: TimeInterval(seconds))
     }
     
+    // Timer converter
     func timeString(time:TimeInterval) -> String {
         let m = Int(time) / 6000
         let s = Int(time) / 100 % 60

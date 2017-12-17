@@ -8,6 +8,7 @@
 
 import UIKit
 
+// This class is designed for the pause pop-up screen
 class PauseViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -20,11 +21,13 @@ class PauseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //Return to level selection, which is the grandparent of this screen
     @IBAction func ReturnPushed(_ sender: Any) {
         let vc = self.presentingViewController!.presentingViewController!
         vc.dismiss(animated: false, completion: nil)
     }
     
+    //Resume the game. Should resume the timer and reactivate the ball movement
     @IBAction func resumePushed(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         let vc = self.presentingViewController as! ViewController
