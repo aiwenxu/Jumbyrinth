@@ -210,7 +210,6 @@ class BallView: UIView {
             
         //level X
         else if levelNumber == 6 {
-            //TODO: also randomize row, cols, holes
             let numOfRows = 20
             let numOfCols = 12
             let numOfHoles = 32
@@ -260,13 +259,19 @@ class BallView: UIView {
 //        drawHLine(x: 150, y: 110, length: 20)
 //    }
     
+    // A method used to generate a random maze using a recursive backtracking algorithm. The reference is below.
+    // The recursive backtracking algorithm: http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking
+    // (There are also other maze generation algorithms on the site.)
     private func makeRandomMaze(numOfRows: Int, numOfCols: Int, seeded: Bool) {
-
+        
+        // Specify a random seed if a fixed maze is desired. Otherwise, just use the default random source.
         var randomSource = GKMersenneTwisterRandomSource.init()
         if seeded {
             randomSource = GKMersenneTwisterRandomSource.init(seed: 54748356234563257)
         }
         
+        // Imagine the maze is initially a table of cells. The borderlines between the cells are taken down to make a maze.
+        // So here we keep a matrix where each entry corresponds to a cell and encodes which borderlines (or walls) of the cell are taken down later.
         var cells : [[Int]] = []
         for row in 0..<numOfRows {
             cells.append([Int]())
@@ -275,8 +280,10 @@ class BallView: UIView {
             }
         }
         
+        // The method to carve the walls between the cells.
         carvePassage(randomSource: randomSource, cx: 0, cy: 0, cells: &cells)
-
+        
+        // Calculate how wide and how high each cell should appear on screen. Then according to the information in the matrix, draw the maze on screen using drawHLine and drawVLine.
         let cellWidth = Int(self.bounds.width)/numOfCols
         let cellHeight = Int(self.bounds.height)/numOfRows
         for col in 0..<numOfRows {
@@ -294,24 +301,38 @@ class BallView: UIView {
         
     }
     
+    // The function to determine which walls between the cells should be taken down and record this information in the matrix that is passed in.
     private func carvePassage(randomSource: GKMersenneTwisterRandomSource, cx: Int, cy: Int, cells: inout [[Int]]) {
         
+        // Define N, S, E, W to be 1, 2, 4, 8. Later use bit wise operation to record which walls in what direction are taken down.
         let N : Int = 1
         let S : Int = 2
         let E : Int = 4
         let W : Int = 8
+        
+        // A dictionary that keeps how the index of the cell changes if a step is taken in a direction. Used to conveniently calculate the next cell.
         let dx = [N: 0, S: 0, E: 1, W: -1]
         let dy = [N: -1, S: 1, E: 0, W: 0]
+        
+        // A dictionary that keeps the opposite direction of a direction. Used to conveniently "take down" the walls in the next cell.
         let opposite = [N: S, S: N, E: W, W: E]
         
+        // The exploration of the maze should be random in order to generate interesting mazes. shuffledDirections will store a shuffled version of all possible directions [N, S, E, W].
         var shuffledDirections : [Int] = []
-        
         shuffledDirections = randomSource.arrayByShufflingObjects(in: [N, S, E, W]) as! [Int]
         
+        // This is the recursive backtracking algorithm.
+        // Each time select a direction randomly.
         for direction in shuffledDirections {
+            
+            // Calculate the position of the next cell, which is the cell in the chosen direction of the current cell.
             let nx = cx + dx[direction]!
             let ny = cy + dy[direction]!
+            
+            // If the next cell is within the maze, proceed.
             if (nx >= 0) && (nx <= cells[0].count - 1) && (ny >= 0) && (ny <= cells.count - 1) {
+                
+                // If the next cell has not been visited (i.e., its corresponding entry is still 0), we take down the wall between the current cell and the next cell, and call carvePassage on the next cell. Otherwise, do nothing.
                 if (cells[ny][nx] == 0) {
                     cells[cy][cx] |= direction
                     cells[ny][nx] |= opposite[direction]!

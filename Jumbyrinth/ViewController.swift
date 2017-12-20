@@ -152,8 +152,13 @@ class ViewController: UIViewController {
         return String(format: "%02d:%02d:%02d", m, s, ms)
     }
     
+    // Get the final score and save to disk.
     private func saveScore(newScore: ScoreRecord) {
+        
+        // Load the previously saved scores.
         var scores = loadSavedScores()
+        
+        // If it is not nil, append the new score. Otherwise, instantiate an array and add the new score.
         if (scores != nil) {
             scores?.append(newScore)
         }
@@ -161,23 +166,25 @@ class ViewController: UIViewController {
             scores = [ScoreRecord]()
             scores?.append(newScore)
         }
+        
+        // Sort the score.
         scores?.sort(by: { $0.score < $1.score })
+        
+        // If the number of saved scores exceed 10, only keep the top 10.
         if scores!.count > 10 {
             scores = Array(scores![0...9])
         }
-        //save the new scores
-//        for record in scores! {
-//            print(record.score)
-//            print(record.date)
-//        }
-//        print(scores!)
+        
+        // Save the score array.
         saveScoreArray(scores: scores!)
     }
     
+    // Load the saved scores according to the URL defined in ScoreRecord class.
     private func loadSavedScores() -> [ScoreRecord]? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: ScoreRecord.ArchiveURLArray[levelNumber - 1].path) as? [ScoreRecord]
     }
     
+    // Save the updated scores according to the URL defined in ScoreRecord class.
     private func saveScoreArray(scores: [ScoreRecord]) {
         let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(scores, toFile: ScoreRecord.ArchiveURLArray[levelNumber - 1].path)
         if isSuccessfulSave {
@@ -187,6 +194,5 @@ class ViewController: UIViewController {
             print("save fails")
         }
     }
-    
     
 }
