@@ -442,68 +442,66 @@ class BallView: UIView {
     
     
     func updateLocation(multiplier : Double) {
-        if (lastUpdateTime != nil)&&(!pause) {
-            
-            let updatePeriod = Date.init().timeIntervalSince(lastUpdateTime!)
-            
-            //the accelleration is different on the floor and on the sky
-            //we do not apply the same rule to ballZV, as its trigger rule is different
-            if (self.z < 2) {
-                ballXV = ballXV + accelleration.x * updatePeriod
-                ballYV = ballYV + accelleration.y * updatePeriod
-            }
-            else {
-                ballXV = (ballXV + accelleration.x * updatePeriod * 0.6) * 0.8
-                ballYV = (ballYV + accelleration.y * updatePeriod * 0.6) * 0.8
-            }
-            
-            //Speed limit, making the game more reasonable
-            if (ballXV > 0.3) {ballXV = 0.3}
-            if (ballXV < -0.3) {ballXV = -0.3}
-            if (ballYV > 0.3) {ballYV = 0.3}
-            if (ballYV < -0.3) {ballYV = -0.3}
-            
-            //Only a large enough accerleration on z-axis can trigger jump
-            //No jump on the sky
-            if ((self.jump.z > 0.6)&&(self.z == 0)) {
-                ballZV = self.jump.z * multiplier / 400;
-            }
-            
-            //The ball size changes when it is on the sky
-            //The acceleration and z-vocility changes during ball on the sky
-            if ((self.z > 0)||(ballZV > 0)) {
-                
-                imageView.frame.size.width = imageWidth * CGFloat(1 + z / 100)
-                imageView.frame.size.height = imageHeight * CGFloat(1 + z / 100)
-                
-                z = z + ballZV
-                ballZV -= 0.7
-            }
-            
-            //fall back to the ground
-            if (z < 0) {
-                z = 0
-                
-                //z-axis bounce
-                if (ballZV < -1) {
-                    ballZV = -ballZV * 0.5
-                }
-                else {
-                    ballZV = 0;
-                }
-                
-                imageView.frame.size.width = imageWidth
-                imageView.frame.size.height = imageHeight
-            }
-            
-            //update location of the ball in the maze
-            let coefficient = updatePeriod * multiplier
-            currentPoint = CGPoint(x: currentPoint.x + (CGFloat)(ballXV * coefficient), y: currentPoint.y - (CGFloat)(ballYV * coefficient))
+        
+        let updatePeriod = 0.01
+        
+        //the accelleration is different on the floor and on the sky
+        //we do not apply the same rule to ballZV, as its trigger rule is different
+        if (self.z < 2) {
+            ballXV = ballXV + accelleration.x * updatePeriod
+            ballYV = ballYV + accelleration.y * updatePeriod
+        }
+        else {
+            ballXV = (ballXV + accelleration.x * updatePeriod * 0.6) * 0.8
+            ballYV = (ballYV + accelleration.y * updatePeriod * 0.6) * 0.8
         }
         
-        //record the update
-        lastUpdateTime = Date()
-        pause = false
+        //Speed limit, making the game more reasonable
+        if (ballXV > 0.3) {ballXV = 0.3}
+        if (ballXV < -0.3) {ballXV = -0.3}
+        if (ballYV > 0.3) {ballYV = 0.3}
+        if (ballYV < -0.3) {ballYV = -0.3}
+        
+        //Only a large enough accerleration on z-axis can trigger jump
+        //No jump on the sky
+        if ((self.jump.z > 0.6)&&(self.z == 0)) {
+            ballZV = self.jump.z * multiplier / 400;
+        }
+        
+        //The ball size changes when it is on the sky
+        //The acceleration and z-vocility changes during ball on the sky
+        if ((self.z > 0)||(ballZV > 0)) {
+            
+            imageView.frame.size.width = imageWidth * CGFloat(1 + z / 100)
+            imageView.frame.size.height = imageHeight * CGFloat(1 + z / 100)
+            
+            z = z + ballZV
+            ballZV -= 0.7
+        }
+        
+        //fall back to the ground
+        if (z < 0) {
+            z = 0
+            
+            //z-axis bounce
+            if (ballZV < -1) {
+                ballZV = -ballZV * 0.5
+            }
+            else {
+                ballZV = 0;
+            }
+            
+            imageView.frame.size.width = imageWidth
+            imageView.frame.size.height = imageHeight
+        }
+        
+        //update location of the ball in the maze
+        let coefficient = updatePeriod * multiplier
+        currentPoint = CGPoint(x: currentPoint.x + (CGFloat)(ballXV * coefficient), y: currentPoint.y - (CGFloat)(ballYV * coefficient))
+    
+        
+        //record the update time
+        self.pause = false
     }
 }
 
