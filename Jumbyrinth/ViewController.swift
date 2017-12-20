@@ -78,6 +78,7 @@ class ViewController: UIViewController {
     
     // Start the game
     // Start to collect data from deviceMotion and start to update the ball location accordingly
+    // Update method referenced from: https://github.com/Stanbai/sensorDemo
     public func playBall() {
         
         //Start to record time

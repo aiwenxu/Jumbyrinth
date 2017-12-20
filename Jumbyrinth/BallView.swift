@@ -12,6 +12,7 @@ import GameplayKit
 
 // The class designed to control the ball and related motion in the actual game scene
 // Also in charge of maze generation and drawing
+// Part of ball movement updatelocation method referenced from: https://github.com/Stanbai/sensorDemo
 class BallView: UIView {
     
     var levelNumber : Int = 0
