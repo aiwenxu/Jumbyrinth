@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -38,9 +39,8 @@
                                 <rect key="frame" x="302" y="544" width="37" height="38"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-xX-ff7">
-                                <rect key="frame" x="139" y="28" width="97" height="59"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfb-xX-ff7">
+                                <rect key="frame" x="146.5" y="28" width="82" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -49,9 +49,8 @@
                                 <rect key="frame" x="0.0" y="590" width="375" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUT-PU-oj0">
-                                <rect key="frame" x="139" y="94" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUT-PU-oj0">
+                                <rect key="frame" x="162" y="94" width="51.5" height="20"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -70,6 +69,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.091512353369999994" green="0.76631454330000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NUT-PU-oj0" firstAttribute="top" secondItem="Zfb-xX-ff7" secondAttribute="bottom" constant="36" id="LXa-SC-ZpZ"/>
+                            <constraint firstItem="Zfb-xX-ff7" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="SyT-Vv-wJO"/>
+                            <constraint firstItem="Zfb-xX-ff7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xyw-WA-Yk1"/>
+                            <constraint firstItem="NUT-PU-oj0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="yaX-ZO-0qG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IfT-yV-xrP"/>
                     <connections>
@@ -217,7 +222,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xl2-nR-VUV">
-                                <rect key="frame" x="25" y="60" width="53" height="30"/>
+                                <rect key="frame" x="25" y="50" width="53" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <state key="normal" title="Back">
@@ -227,18 +232,25 @@
                                     <action selector="backPushed:" destination="nCv-jz-i3s" eventType="touchUpInside" id="0dr-zD-OaD"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei8-rV-0D7">
-                                <rect key="frame" x="38" y="98" width="299" height="494"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Jumbyrinth is a maze game, but it is not the same as a traditional maze game. There are two notable additional features. The first feature is that there exist "wormholes" in the maze. If the ball is caught into one of the "wormholes", it will be randomly transported to the location of another "wormhole". The second feature is that the ball is allowed to jump. If you are stuck in a dead end, you can jump over the wall to get out. If you have a "wormhole" ahead that you wish to avoid, you can jump over the "wormhole" to get past it.
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ei8-rV-0D7">
+                                <rect key="frame" x="38" y="86.5" width="299" height="494"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="494" id="Aow-lx-T9q"/>
+                                    <constraint firstAttribute="width" constant="299" id="tb2-dS-3v7"/>
+                                </constraints>
+                                <mutableString key="text">Jumbyrinth is a maze game, but it is not the same as a traditional maze game. There are two notable additional features. The first feature is that there exist "wormholes" in the maze. If the ball is caught into one of the "wormholes", it will be randomly transported to the location of another "wormhole". The second feature is that the ball is allowed to jump. If you are stuck in a dead end, you can jump over the wall to get out. 
 
-To play, you can choose one of the six levels, which are "Level 1", "Level 2", "Level 3", "Level 4", "Level 5" and "Surprise Me!". "Level 1", "Level 2", "Level 3", "Level 4" and "Level 5" are fixed levels. They are increasingly difficult. "Surprise Me!", as the name indicates, is a surprise. In this level the maze and the "wormholes" in it are randomly generated. Each time you play this level, you will have a different maze. The difficulty of this level is fixed, and it is more difficult than all the preceding levels.  Author: Aiwen Xu and ShenghaoL Lin</string>
+To play, you can choose one of the six levels. "Level 1", "Level 2", "Level 3", "Level 4" and "Level 5" are fixed levels. They are increasingly difficult. "Surprise Me!", as the name indicates, is a surprise. In this level the maze and the "wormholes" in it are randomly generated. Each time you play this level, you will have a different maze.   Authors: Aiwen Xu and Shenghao Lin</mutableString>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ei8-rV-0D7" firstAttribute="centerY" secondItem="LQ5-7D-okz" secondAttribute="centerY" id="Tpq-0g-779"/>
+                            <constraint firstItem="Ei8-rV-0D7" firstAttribute="centerX" secondItem="LQ5-7D-okz" secondAttribute="centerX" id="WzE-fH-Ef7"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="colorview" destination="LQ5-7D-okz" id="v7u-A4-9Yx"/>
@@ -260,9 +272,12 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="117-dL-Vis">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="117-dL-Vis">
                                 <rect key="frame" x="53" y="313" width="122" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="122" id="qpz-GO-YNC"/>
+                                    <constraint firstAttribute="height" constant="40" id="wFm-WF-Gbk"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                 <state key="normal" title="Play!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -271,9 +286,12 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                     <segue destination="hWG-0x-Jv1" kind="presentation" modalTransitionStyle="flipHorizontal" id="9iu-nx-ehZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxW-nY-qME">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OxW-nY-qME">
                                 <rect key="frame" x="200" y="313" width="122" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hi8-n5-MXm"/>
+                                    <constraint firstAttribute="width" constant="122" id="llY-lF-ZcU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                 <state key="normal" title="Leaderboard">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -282,9 +300,12 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                     <segue destination="nf4-hK-ihs" kind="presentation" modalTransitionStyle="flipHorizontal" id="Kdn-Ef-6Hr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mdt-6M-W05">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mdt-6M-W05">
                                 <rect key="frame" x="139" y="613" width="96" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="WlD-bf-tGe"/>
+                                    <constraint firstAttribute="width" constant="96" id="Zfd-uj-RiW"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                 <state key="normal" title="Rules">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -295,6 +316,14 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.091512353373646604" green="0.76631454327412107" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Mdt-6M-W05" firstAttribute="centerX" secondItem="Fun-Oy-0nN" secondAttribute="centerX" id="0MX-8p-EB2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OxW-nY-qME" secondAttribute="trailing" constant="37" id="2vs-Ta-sYF"/>
+                            <constraint firstItem="OxW-nY-qME" firstAttribute="centerY" secondItem="Fun-Oy-0nN" secondAttribute="centerY" id="9dU-Zh-bmn"/>
+                            <constraint firstItem="EEv-5h-Ar6" firstAttribute="top" secondItem="Mdt-6M-W05" secondAttribute="bottom" constant="15" id="cGh-Fl-uWr"/>
+                            <constraint firstItem="117-dL-Vis" firstAttribute="centerY" secondItem="Fun-Oy-0nN" secondAttribute="centerY" id="l6d-Ih-gIV"/>
+                            <constraint firstItem="117-dL-Vis" firstAttribute="leading" secondItem="Fun-Oy-0nN" secondAttribute="leadingMargin" constant="37" id="qy6-Zy-hJ2"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="colorview" destination="Fun-Oy-0nN" id="7uF-iI-Mft"/>
@@ -428,9 +457,8 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                     <action selector="backPressed:" destination="hWG-0x-Jv1" eventType="touchUpInside" id="lbJ-wF-X9S"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Levels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEF-KR-rVp">
-                                <rect key="frame" x="92" y="45" width="190" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Levels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEF-KR-rVp">
+                                <rect key="frame" x="150.5" y="45" width="73" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -462,6 +490,7 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             <constraint firstItem="Wsj-5t-MiM" firstAttribute="centerX" secondItem="i02-o4-sYY" secondAttribute="centerX" id="XK1-fA-OiJ"/>
                             <constraint firstItem="D4m-cS-hAP" firstAttribute="height" secondItem="i02-o4-sYY" secondAttribute="height" id="Z6G-uu-nH3"/>
                             <constraint firstItem="D4m-cS-hAP" firstAttribute="width" secondItem="i02-o4-sYY" secondAttribute="width" id="ZQ9-Hc-XoW"/>
+                            <constraint firstItem="hEF-KR-rVp" firstAttribute="top" secondItem="kQW-4x-z36" secondAttribute="bottom" constant="25" id="ZTF-aE-1NK"/>
                             <constraint firstItem="Wsj-5t-MiM" firstAttribute="top" secondItem="CM4-fR-kOG" secondAttribute="bottom" id="Zoy-7q-YpM"/>
                             <constraint firstItem="KHu-t7-74O" firstAttribute="centerX" secondItem="i02-o4-sYY" secondAttribute="centerX" id="c13-El-n0e"/>
                             <constraint firstItem="nq6-8t-rXm" firstAttribute="centerX" secondItem="i02-o4-sYY" secondAttribute="centerX" id="cMR-kT-mRI"/>
@@ -474,6 +503,7 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             <constraint firstItem="UMp-Pe-kJn" firstAttribute="centerX" secondItem="i02-o4-sYY" secondAttribute="centerX" id="fbU-Pl-WAl"/>
                             <constraint firstItem="ydI-Mx-atr" firstAttribute="top" secondItem="TJa-iI-Nw6" secondAttribute="bottom" id="flK-46-sk3"/>
                             <constraint firstItem="CM4-fR-kOG" firstAttribute="top" secondItem="6Ix-xZ-iyI" secondAttribute="bottom" id="g12-qu-Jl7"/>
+                            <constraint firstItem="hEF-KR-rVp" firstAttribute="centerX" secondItem="ujH-9X-nRb" secondAttribute="centerX" id="hUO-tL-Iwa"/>
                             <constraint firstItem="bbY-Cs-C0M" firstAttribute="top" secondItem="z0m-oe-jQl" secondAttribute="bottom" id="i8w-4N-Crw"/>
                             <constraint firstItem="KHu-t7-74O" firstAttribute="top" secondItem="B08-4W-ib8" secondAttribute="bottom" id="jAW-gp-5Sl"/>
                             <constraint firstItem="zqP-kC-EdY" firstAttribute="height" secondItem="i02-o4-sYY" secondAttribute="height" id="jgu-d3-JzY"/>
@@ -516,16 +546,22 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1k-8Y-NeL">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1k-8Y-NeL">
                                     <rect key="frame" x="60" y="65" width="255" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Fyh-yl-btg"/>
+                                        <constraint firstAttribute="width" constant="255" id="pWQ-gw-3tO"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZs-MW-I6Y">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JZs-MW-I6Y">
                                     <rect key="frame" x="25" y="30" width="53" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="9Z0-tP-jjY"/>
+                                        <constraint firstAttribute="height" constant="30" id="ED2-FZ-Tqq"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                     <state key="normal" title="Back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -534,21 +570,37 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                         <action selector="backPressed:" destination="GAn-3X-r8g" eventType="touchUpInside" id="cEr-gY-pvh"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5z-ko-akQ">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5z-ko-akQ">
                                     <rect key="frame" x="126" y="115" width="123" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="123" id="5Pm-fu-7Gv"/>
+                                        <constraint firstAttribute="height" constant="21" id="Qek-EM-xS0"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUt-gn-ndy">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUt-gn-ndy">
                                     <rect key="frame" x="90" y="25" width="195" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="195" id="5YG-K7-4KG"/>
+                                        <constraint firstAttribute="height" constant="40" id="Dk1-4F-eWz"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="j1k-8Y-NeL" firstAttribute="top" secondItem="oUt-gn-ndy" secondAttribute="bottom" id="CfP-AK-bQj"/>
+                                <constraint firstItem="y5z-ko-akQ" firstAttribute="centerX" secondItem="7qF-Ev-XVV" secondAttribute="centerX" id="JeR-bG-ar2"/>
+                                <constraint firstItem="JZs-MW-I6Y" firstAttribute="leading" secondItem="7qF-Ev-XVV" secondAttribute="leading" constant="25" id="TyH-v1-M3e"/>
+                                <constraint firstItem="y5z-ko-akQ" firstAttribute="top" secondItem="j1k-8Y-NeL" secondAttribute="bottom" constant="10" id="UP0-vf-yD7"/>
+                                <constraint firstItem="j1k-8Y-NeL" firstAttribute="centerX" secondItem="7qF-Ev-XVV" secondAttribute="centerX" id="VRg-Ja-huw"/>
+                                <constraint firstItem="JZs-MW-I6Y" firstAttribute="top" secondItem="7qF-Ev-XVV" secondAttribute="top" constant="30" id="YE3-vT-I2X"/>
+                                <constraint firstItem="oUt-gn-ndy" firstAttribute="centerX" secondItem="7qF-Ev-XVV" secondAttribute="centerX" id="hPF-A5-bwV"/>
+                                <constraint firstItem="oUt-gn-ndy" firstAttribute="top" secondItem="7qF-Ev-XVV" secondAttribute="top" constant="25" id="x9c-Gd-k2O"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreTableViewCell" id="ea9-Qp-1m5" customClass="ScoreTableViewCell" customModule="Jumbyrinth" customModuleProvider="target">
@@ -606,16 +658,22 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRa-Np-Y1f">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRa-Np-Y1f">
                                     <rect key="frame" x="60" y="65" width="255" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="255" id="PGQ-rq-TZM"/>
+                                        <constraint firstAttribute="height" constant="40" id="zOb-GV-dCk"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dg8-yL-PR0">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dg8-yL-PR0">
                                     <rect key="frame" x="25" y="30" width="53" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="Ut0-gw-XyP"/>
+                                        <constraint firstAttribute="width" constant="53" id="ojw-cb-zEi"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                     <state key="normal" title="Back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -624,21 +682,37 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                         <action selector="backPressed:" destination="ulU-61-9Fc" eventType="touchUpInside" id="oZ4-Bh-N2F"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhi-Ra-cJG">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhi-Ra-cJG">
                                     <rect key="frame" x="126" y="115" width="123" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="123" id="hnx-ZO-i0P"/>
+                                        <constraint firstAttribute="height" constant="21" id="onK-Z7-08h"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhi-Ut-DQZ">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhi-Ut-DQZ">
                                     <rect key="frame" x="90" y="25" width="195" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="195" id="84w-Ho-Rzb"/>
+                                        <constraint firstAttribute="height" constant="40" id="tXQ-tx-Kyp"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="Dg8-yL-PR0" firstAttribute="top" secondItem="6c7-vL-ifo" secondAttribute="top" constant="30" id="BWC-ji-RMz"/>
+                                <constraint firstItem="Dg8-yL-PR0" firstAttribute="leading" secondItem="6c7-vL-ifo" secondAttribute="leading" constant="25" id="T9D-z6-70w"/>
+                                <constraint firstItem="vRa-Np-Y1f" firstAttribute="centerX" secondItem="6c7-vL-ifo" secondAttribute="centerX" id="nkC-QS-LAg"/>
+                                <constraint firstItem="Nhi-Ut-DQZ" firstAttribute="top" secondItem="6c7-vL-ifo" secondAttribute="top" constant="25" id="qPe-8k-h7d"/>
+                                <constraint firstItem="vRa-Np-Y1f" firstAttribute="top" secondItem="Nhi-Ut-DQZ" secondAttribute="bottom" id="tJo-15-kOQ"/>
+                                <constraint firstItem="nhi-Ra-cJG" firstAttribute="centerX" secondItem="6c7-vL-ifo" secondAttribute="centerX" id="xZ1-9F-kVz"/>
+                                <constraint firstItem="nhi-Ra-cJG" firstAttribute="top" secondItem="vRa-Np-Y1f" secondAttribute="bottom" constant="10" id="xt3-bM-1c4"/>
+                                <constraint firstItem="Nhi-Ut-DQZ" firstAttribute="centerX" secondItem="6c7-vL-ifo" secondAttribute="centerX" id="zPM-a8-TID"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreTableViewCell" id="CME-F8-vfF" customClass="ScoreTableViewCell" customModule="Jumbyrinth" customModuleProvider="target">
@@ -696,16 +770,22 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBT-DT-St6">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PBT-DT-St6">
                                     <rect key="frame" x="60" y="65" width="255" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="QHT-d2-bu1"/>
+                                        <constraint firstAttribute="width" constant="255" id="qfF-vc-ngX"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="405-Z1-X4w">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="405-Z1-X4w">
                                     <rect key="frame" x="25" y="30" width="53" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="9bJ-Ry-Ubz"/>
+                                        <constraint firstAttribute="width" constant="53" id="HLW-kg-2U1"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                     <state key="normal" title="Back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -714,21 +794,37 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                         <action selector="backPressed:" destination="HEf-IT-LdQ" eventType="touchUpInside" id="AMl-7Q-atv"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCX-6V-Hmt">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCX-6V-Hmt">
                                     <rect key="frame" x="126" y="115" width="123" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="123" id="Xcl-Nn-6Ne"/>
+                                        <constraint firstAttribute="height" constant="21" id="myc-WW-4mu"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp8-ct-d8k">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mp8-ct-d8k">
                                     <rect key="frame" x="90" y="25" width="195" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="195" id="f2P-f0-1hG"/>
+                                        <constraint firstAttribute="height" constant="40" id="fQe-G6-vfV"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="PBT-DT-St6" firstAttribute="top" secondItem="Mp8-ct-d8k" secondAttribute="bottom" id="3eE-ER-FVa"/>
+                                <constraint firstItem="TCX-6V-Hmt" firstAttribute="top" secondItem="PBT-DT-St6" secondAttribute="bottom" constant="10" id="L4l-tK-ngu"/>
+                                <constraint firstItem="405-Z1-X4w" firstAttribute="leading" secondItem="GxQ-WA-3Ng" secondAttribute="leading" constant="25" id="LOs-7k-y2U"/>
+                                <constraint firstItem="Mp8-ct-d8k" firstAttribute="centerX" secondItem="GxQ-WA-3Ng" secondAttribute="centerX" id="MOY-be-COj"/>
+                                <constraint firstItem="Mp8-ct-d8k" firstAttribute="top" secondItem="GxQ-WA-3Ng" secondAttribute="top" constant="25" id="hnE-0M-9Bn"/>
+                                <constraint firstItem="PBT-DT-St6" firstAttribute="centerX" secondItem="GxQ-WA-3Ng" secondAttribute="centerX" id="m8z-Xd-jM4"/>
+                                <constraint firstItem="TCX-6V-Hmt" firstAttribute="centerX" secondItem="GxQ-WA-3Ng" secondAttribute="centerX" id="yRo-lA-wpc"/>
+                                <constraint firstItem="405-Z1-X4w" firstAttribute="top" secondItem="GxQ-WA-3Ng" secondAttribute="top" constant="30" id="zI1-wu-Rfo"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreTableViewCell" id="Wl8-wM-GG7" customClass="ScoreTableViewCell" customModule="Jumbyrinth" customModuleProvider="target">
@@ -786,16 +882,22 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oh-uE-s4S">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4oh-uE-s4S">
                                     <rect key="frame" x="60" y="65" width="255" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="UaF-nB-gKZ"/>
+                                        <constraint firstAttribute="width" constant="255" id="bSM-fb-FsI"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odv-f1-KIM">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="odv-f1-KIM">
                                     <rect key="frame" x="25" y="30" width="53" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="E7c-Y5-qRe"/>
+                                        <constraint firstAttribute="height" constant="30" id="TlU-pu-7du"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                     <state key="normal" title="Back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -804,21 +906,37 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                         <action selector="backPressed:" destination="8wk-Nf-58l" eventType="touchUpInside" id="IPe-PS-qrA"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzP-8A-Nbm">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzP-8A-Nbm">
                                     <rect key="frame" x="126" y="115" width="123" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="123" id="Tmn-4x-ByK"/>
+                                        <constraint firstAttribute="height" constant="21" id="rgu-YL-iVG"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUr-hL-SQx">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUr-hL-SQx">
                                     <rect key="frame" x="90" y="25" width="195" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="195" id="8ka-Jh-4MV"/>
+                                        <constraint firstAttribute="height" constant="40" id="dbR-kd-oj8"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="AUr-hL-SQx" firstAttribute="top" secondItem="wiP-uf-d8M" secondAttribute="top" constant="25" id="3eq-SN-wd2"/>
+                                <constraint firstItem="4oh-uE-s4S" firstAttribute="top" secondItem="AUr-hL-SQx" secondAttribute="bottom" id="5lv-dc-ibE"/>
+                                <constraint firstItem="odv-f1-KIM" firstAttribute="leading" secondItem="wiP-uf-d8M" secondAttribute="leading" constant="25" id="ANt-kf-JY2"/>
+                                <constraint firstItem="tzP-8A-Nbm" firstAttribute="centerX" secondItem="wiP-uf-d8M" secondAttribute="centerX" id="MDf-K2-yWn"/>
+                                <constraint firstItem="odv-f1-KIM" firstAttribute="top" secondItem="wiP-uf-d8M" secondAttribute="top" constant="30" id="gYw-Fc-Ohf"/>
+                                <constraint firstItem="tzP-8A-Nbm" firstAttribute="top" secondItem="4oh-uE-s4S" secondAttribute="bottom" constant="10" id="noO-6t-e6q"/>
+                                <constraint firstItem="4oh-uE-s4S" firstAttribute="centerX" secondItem="wiP-uf-d8M" secondAttribute="centerX" id="osm-WE-Gc3"/>
+                                <constraint firstItem="AUr-hL-SQx" firstAttribute="centerX" secondItem="wiP-uf-d8M" secondAttribute="centerX" id="zJR-ug-0qL"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreTableViewCell" id="Hg7-b6-JNd" customClass="ScoreTableViewCell" customModule="Jumbyrinth" customModuleProvider="target">
@@ -876,16 +994,22 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-MW-uV5">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-MW-uV5">
                                     <rect key="frame" x="60" y="65" width="255" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="6yf-TM-Uy4"/>
+                                        <constraint firstAttribute="width" constant="255" id="dlS-VW-oxN"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhd-I1-WnT">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qhd-I1-WnT">
                                     <rect key="frame" x="25" y="30" width="53" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="53" id="Qrg-n2-g05"/>
+                                        <constraint firstAttribute="height" constant="30" id="yvN-wW-aIS"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                     <state key="normal" title="Back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -894,21 +1018,37 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                         <action selector="backPressed:" destination="dQl-4v-GG9" eventType="touchUpInside" id="v0u-A7-bq8"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o91-cY-xV2">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o91-cY-xV2">
                                     <rect key="frame" x="126" y="115" width="123" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="21" id="70F-Sh-pfU"/>
+                                        <constraint firstAttribute="width" constant="123" id="AOc-5D-xMm"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsE-ce-6vx">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsE-ce-6vx">
                                     <rect key="frame" x="90" y="25" width="195" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="M1C-Ms-8ao"/>
+                                        <constraint firstAttribute="width" constant="195" id="qaW-T2-xrV"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="o91-cY-xV2" firstAttribute="top" secondItem="OSd-MW-uV5" secondAttribute="bottom" constant="10" id="EJ4-xe-Q9n"/>
+                                <constraint firstItem="OSd-MW-uV5" firstAttribute="top" secondItem="rsE-ce-6vx" secondAttribute="bottom" id="FyC-pG-qJg"/>
+                                <constraint firstItem="Qhd-I1-WnT" firstAttribute="top" secondItem="VCi-0A-5AW" secondAttribute="top" constant="30" id="KG0-GO-kek"/>
+                                <constraint firstItem="OSd-MW-uV5" firstAttribute="centerX" secondItem="VCi-0A-5AW" secondAttribute="centerX" id="MhD-aF-Gyn"/>
+                                <constraint firstItem="Qhd-I1-WnT" firstAttribute="leading" secondItem="VCi-0A-5AW" secondAttribute="leading" constant="25" id="hos-x7-oP4"/>
+                                <constraint firstItem="rsE-ce-6vx" firstAttribute="top" secondItem="VCi-0A-5AW" secondAttribute="top" constant="25" id="iGM-Ls-oVg"/>
+                                <constraint firstItem="o91-cY-xV2" firstAttribute="centerX" secondItem="VCi-0A-5AW" secondAttribute="centerX" id="kKY-EO-7ZU"/>
+                                <constraint firstItem="rsE-ce-6vx" firstAttribute="centerX" secondItem="VCi-0A-5AW" secondAttribute="centerX" id="rAW-7s-0GB"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreTableViewCell" id="bDS-Jj-FOq" customClass="ScoreTableViewCell" customModule="Jumbyrinth" customModuleProvider="target">
@@ -966,16 +1106,22 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wss-gU-tFe">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 0 Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wss-gU-tFe">
                                     <rect key="frame" x="60" y="65" width="255" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="JQe-ji-nkY"/>
+                                        <constraint firstAttribute="width" constant="255" id="NbV-wY-qta"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZR-cT-bw0">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZR-cT-bw0">
                                     <rect key="frame" x="25" y="30" width="53" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="ZcB-j6-Bdc"/>
+                                        <constraint firstAttribute="width" constant="53" id="yfs-zc-xcX"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                     <state key="normal" title="Back">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -984,21 +1130,37 @@ To play, you can choose one of the six levels, which are "Level 1", "Level 2", "
                                         <action selector="backPressed:" destination="83I-0a-k8m" eventType="touchUpInside" id="AAe-SP-ggh"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-s1-A1E">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(No scores yet!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-s1-A1E">
                                     <rect key="frame" x="126" y="115" width="123" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="123" id="JxC-hv-zzk"/>
+                                        <constraint firstAttribute="height" constant="21" id="pkP-Xi-gY3"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3M-64-eGQ">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leaderboard" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3M-64-eGQ">
                                     <rect key="frame" x="90" y="25" width="195" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="d4V-L4-8T5"/>
+                                        <constraint firstAttribute="width" constant="195" id="zOY-xI-1a6"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="25"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <constraints>
+                                <constraint firstItem="M3M-64-eGQ" firstAttribute="centerX" secondItem="Wvb-So-ZKB" secondAttribute="centerX" id="3Va-Xa-VjJ"/>
+                                <constraint firstItem="FZR-cT-bw0" firstAttribute="top" secondItem="Wvb-So-ZKB" secondAttribute="top" constant="30" id="868-oJ-NGa"/>
+                                <constraint firstItem="wss-gU-tFe" firstAttribute="top" secondItem="M3M-64-eGQ" secondAttribute="bottom" id="KbZ-UZ-1wO"/>
+                                <constraint firstItem="wss-gU-tFe" firstAttribute="centerX" secondItem="Wvb-So-ZKB" secondAttribute="centerX" id="UJM-PX-1ja"/>
+                                <constraint firstItem="q1o-s1-A1E" firstAttribute="centerX" secondItem="Wvb-So-ZKB" secondAttribute="centerX" id="klB-SY-KCJ"/>
+                                <constraint firstItem="M3M-64-eGQ" firstAttribute="top" secondItem="Wvb-So-ZKB" secondAttribute="top" constant="25" id="m7A-NK-hec"/>
+                                <constraint firstItem="q1o-s1-A1E" firstAttribute="top" secondItem="wss-gU-tFe" secondAttribute="bottom" constant="10" id="pCS-pi-IKb"/>
+                                <constraint firstItem="FZR-cT-bw0" firstAttribute="leading" secondItem="Wvb-So-ZKB" secondAttribute="leading" constant="25" id="rAk-8e-kbx"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScoreTableViewCell" id="OaM-RN-EmQ" customClass="ScoreTableViewCell" customModule="Jumbyrinth" customModuleProvider="target">
